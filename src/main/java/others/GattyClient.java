@@ -49,23 +49,18 @@ public class GattyClient {
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
-			executor.execute(new Runnable() {
-				
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
+			executor.execute( () -> {
+				try {
+					TimeUnit.SECONDS.sleep(1);
 					try {
-						TimeUnit.SECONDS.sleep(1);
-						try {
-							connect(GattyConstant.REMOTEIP, GattyConstant.PORT);
-						} catch (Exception e) {
-							// TODO: handle exception
-							e.printStackTrace();
-						}
+						connect(GattyConstant.REMOTEIP, GattyConstant.PORT);
 					} catch (Exception e) {
 						// TODO: handle exception
 						e.printStackTrace();
 					}
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
 				}
 			});
 		}

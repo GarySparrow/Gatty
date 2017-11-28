@@ -27,31 +27,31 @@ public class GattyMessageDecoder extends LengthFieldBasedFrameDecoder{
         if (frame == null) return null;
         GattyMessage message = new GattyMessage();
         Header header = new Header();
-        header.setCrcCode(in.readInt());
-        header.setLength(in.readInt());
-        header.setSessionId(in.readLong());
-        header.setType(in.readByte());
-        header.setPriority(in.readByte());
+        header.setCrcCode(frame.readInt());
+        header.setLength(frame.readInt());
+        header.setSessionId(frame.readLong());
+        header.setType(frame.readByte());
+        header.setPriority(frame.readByte());
         
-        int size = in.readInt();
+        int size = frame.readInt();
         if (size > 0) {
             Map<String, Object> external = new HashMap<>();
             int keysize = 0;
             byte[] keyArray = null;
             String key = null;
             for (int i = 0; i < size; i++) {
-                keysize = in.readInt();
+                keysize = frame.readInt();
                 keyArray = new byte[keysize];
-                in.readBytes(keyArray);
+                frame.readBytes(keyArray);
                 key = new String(keyArray, "UTF-8");
-                external.put(key, marshallingDecoder.decode(ctx,in));
+                external.put(key, marshallingDecoder.decode(ctx,frame));
             }
             keyArray = null;
             key = null;
             header.setExternal(external);
         }
-        if (in.readableBytes() > 0) {
-            message.setBody(marshallingDecoder.decode(ctx, in));
+        if (frame.readableBytes() > 0) {
+            message.setBody(marshallingDecoder.decode(ctx, frame));
         }
         message.setHeader(header);
         return message;
