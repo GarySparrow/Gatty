@@ -1,5 +1,7 @@
+package connection;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import others.MessageType;
 
 import java.net.InetSocketAddress;
 import java.util.Map;
@@ -27,7 +29,7 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
                 String ip = address.getAddress().getHostAddress();
                 boolean isOK = false;
                 for (String WIP : whiteList) {
-                    if (WIP.compareTo(equals(ip))) {
+                    if (WIP.equals(ip)) {
                         isOK = true;
                         break;
                     }

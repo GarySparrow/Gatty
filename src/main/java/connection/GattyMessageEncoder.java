@@ -1,3 +1,4 @@
+package connection;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
@@ -13,10 +14,10 @@ import java.util.Map;
  */
 public class GattyMessageEncoder extends MessageToMessageEncoder<GattyMessage>{
 
-    MarshallingEncoder marshallingEncoder;
+    private GattyMarshallingEncoder marshallingEncoder;
 
     public GattyMessageEncoder() throws IOException {
-        this.marshallingEncoder = new MarshallingEncoder();
+        this.marshallingEncoder = MarshallingCodeCFactory.buildMarshallingEncoder();
     }
 
     @Override
@@ -37,21 +38,22 @@ public class GattyMessageEncoder extends MessageToMessageEncoder<GattyMessage>{
         Object value = null;
         for (Map.Entry<String, Object> param : msg.getHeader().getExternal().entrySet()) {
             key = param.getKey();
-            keyArray = key.getBytes();
+            keyArray = key.getBytes("UTF-8");
             sendBuf.writeInt(keyArray.length);
             sendBuf.writeBytes(keyArray);
             value = param.getValue();
-            marshallingEncoder.encode(value, sendBuf);
+            marshallingEncoder.encode(ctx, value, sendBuf);
         }
 
         key = null;
         keyArray = null;
         value = null;
         if (msg.getBody() != null) {
-            marshallingEncoder.encode(msg.getBody(), sendBuf);
-        } else {
-            sendBuf.writeInt(0);
-            sendBuf.setInt(4, sendBuf.readableBytes());
-        }
+            marshallingEncoder.encode(ctx, msg.getBody(), sendBuf);
+        } 
+        
+        int readableBytes = sendBuf.readableBytes();
+        sendBuf.setInt(4, readableBytes);
+        out.add(sendBuf);
     }
 }

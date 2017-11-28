@@ -1,3 +1,4 @@
+package connection;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
@@ -12,11 +13,12 @@ import java.util.Map;
  */
 public class GattyMessageDecoder extends LengthFieldBasedFrameDecoder{
 
-    MarshallingDecoder marshallingDecoder;
+    private GattyMarshallingDecoder marshallingDecoder;
 
-    public GattyMessageDecoder(int maxFrameLength, int lengthFieldOffset, int lengthFieldLength) throws IOException {
-        super(maxFrameLength, lengthFieldOffset, lengthFieldLength);
-        marshallingDecoder = new MarshallingDecoder();
+    public GattyMessageDecoder(int maxFrameLength, int lengthFieldOffset, int lengthFieldLength
+    		, int lengthAdjustment, int initialBytesToStrip) throws IOException {
+        super(maxFrameLength, lengthFieldOffset, lengthFieldLength, lengthAdjustment, initialBytesToStrip);
+        marshallingDecoder = MarshallingCodeCFactory.buildMarshallingDecoder();
     }
 
     @Override
@@ -30,6 +32,7 @@ public class GattyMessageDecoder extends LengthFieldBasedFrameDecoder{
         header.setSessionId(in.readLong());
         header.setType(in.readByte());
         header.setPriority(in.readByte());
+        
         int size = in.readInt();
         if (size > 0) {
             Map<String, Object> external = new HashMap<>();
@@ -41,14 +44,14 @@ public class GattyMessageDecoder extends LengthFieldBasedFrameDecoder{
                 keyArray = new byte[keysize];
                 in.readBytes(keyArray);
                 key = new String(keyArray, "UTF-8");
-                external.put(key, marshallingDecoder.decode(in));
+                external.put(key, marshallingDecoder.decode(ctx,in));
             }
             keyArray = null;
             key = null;
             header.setExternal(external);
         }
-        if (in.readableBytes() > 4) {
-            message.setBody(marshallingDecoder.decode(in));
+        if (in.readableBytes() > 0) {
+            message.setBody(marshallingDecoder.decode(ctx, in));
         }
         message.setHeader(header);
         return message;
