@@ -1,6 +1,7 @@
 package connection;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
 import others.MessageType;
 
@@ -8,7 +9,7 @@ import others.MessageType;
 /**
  * Created by hasee on 2017/11/28.
  */
-public class LoginAuthReqHandler extends ChannelHandlerAdapter{
+public class LoginAuthReqHandler extends ChannelInboundHandlerAdapter{
  
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

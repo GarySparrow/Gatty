@@ -3,10 +3,11 @@ package connection;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
 import others.MessageType;
 
-public class HeartBeatRespHandler extends ChannelHandlerAdapter{
+public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter{
 	
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

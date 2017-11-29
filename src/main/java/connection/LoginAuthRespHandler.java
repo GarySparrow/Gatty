@@ -1,6 +1,7 @@
 package connection;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
 import others.MessageType;
 
@@ -11,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by hasee on 2017/11/28.
  */
-public class LoginAuthRespHandler extends ChannelHandlerAdapter {
+public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
     private Map<String, Boolean> nodeCheck = new ConcurrentHashMap<>();
     private String[] whiteList = {"127.0.0.1"};
 

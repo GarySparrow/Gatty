@@ -4,11 +4,12 @@ import java.util.concurrent.TimeUnit;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
 import io.netty.util.concurrent.ScheduledFuture;
 import others.MessageType;
 
-public class HeartBeatReqHandler extends ChannelHandlerAdapter{
+public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 	private volatile ScheduledFuture<?> heartBeat;
 	
 	@Override
