@@ -35,8 +35,7 @@ public class GattyClient {
 					@Override
 					protected void initChannel(SocketChannel ch) throws Exception {
 						// TODO Auto-generated method stub
-						ch.pipeline().addLast(new GattyMessageDecoder(1024 * 1024,
-								4, 4, -8, 0));
+						ch.pipeline().addLast(new GattyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
 						ch.pipeline().addLast("MessageEncoder", new GattyMessageEncoder());
 						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
 						ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
@@ -48,6 +47,7 @@ public class GattyClient {
 			future.channel().closeFuture().sync();
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			executor.execute( () -> {
 				try {

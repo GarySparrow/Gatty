@@ -26,7 +26,10 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
-    compile group: 'io.netty', name: 'netty-all', version: '4.1.17.Final'
+    compile group: 'io.netty', name: 'netty-all', version: '5.0.0.Alpha2'
 
     compile group: 'org.jboss.marshalling', name: 'jboss-marshalling', version: '2.0.2.Final'
+    
+    compile group: 'org.jboss.marshalling', name: 'jboss-marshalling-serial', version: '2.0.2.Final'
+    
 }

@@ -60,4 +60,12 @@ public final class Header {
     public void setExternal(Map<String, Object> external) {
         this.external = external;
     }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+        return "Header [crcCode=" + crcCode + ", length=" + length  
+                + ", sessionId=" + sessionId + ", type=" + type + ", priority="  
+                + priority + ", externtal=" + external + "]";  
+    }
 }

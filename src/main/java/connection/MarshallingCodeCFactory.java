@@ -16,7 +16,7 @@ public class MarshallingCodeCFactory {
 		MarshallingConfiguration configuration = new MarshallingConfiguration();
 		configuration.setVersion(5);
 		UnmarshallerProvider provider = new DefaultUnmarshallerProvider(marshallerFactory, configuration);
-		GattyMarshallingDecoder decoder = new GattyMarshallingDecoder(provider, 1024);
+		GattyMarshallingDecoder decoder = new GattyMarshallingDecoder(provider, 10240);
 		return decoder;
 	}
 	

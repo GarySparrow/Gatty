@@ -32,17 +32,20 @@ public class GattyServer {
 					protected void initChannel(SocketChannel ch) throws Exception {
 						// TODO Auto-generated method stub
 						ch.pipeline().addLast(new GattyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
-						ch.pipeline().addLast(new GattyMessageEncoder());
+						ch.pipeline().addLast("MessageEncoder", new GattyMessageEncoder());
 						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
-						ch.pipeline().addLast(new LoginAuthRespHandler());
+						ch.pipeline().addLast("loginAuthHandler", new LoginAuthRespHandler());
 						ch.pipeline().addLast("heartBeatHandler", new HeartBeatRespHandler());
 					}
 				});
-			b.bind(GattyConstant.REMOTEIP, GattyConstant.PORT).sync();
+			ChannelFuture future = b.bind(GattyConstant.REMOTEIP, GattyConstant.PORT).sync();
 			System.out.println("Gatty server start successfully : " + (GattyConstant.REMOTEIP + " : "
 					+ GattyConstant.PORT));
+			future.channel().closeFuture().sync();
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
 			bossGroup.shutdownGracefully();
 			workerGroup.shutdownGracefully();
 		}

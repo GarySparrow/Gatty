@@ -1,11 +1,13 @@
 package connection;
 
 
+import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelPromise;
 import others.MessageType;
 
-public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter{
+public class HeartBeatRespHandler extends ChannelHandlerAdapter{
+	
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		// TODO Auto-generated method stub
@@ -20,11 +22,12 @@ public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter{
 			ctx.fireChannelRead(message);
 		}
 	}
-	
+
 	private GattyMessage buildHeartBeat() {
 		GattyMessage message = new GattyMessage();
 		Header header = new Header();
 		header.setType(MessageType.HEARTBEAT_RESP.value());
+		message.setHeader(header);
 		return message;
 	}
 }

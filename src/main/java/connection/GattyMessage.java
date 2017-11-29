@@ -21,4 +21,10 @@ public class GattyMessage {
     public void setBody(Object body) {
         this.body = body;
     }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return "header:" + header + ",body:" + body;  
+    }
 }
