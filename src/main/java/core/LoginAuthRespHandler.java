@@ -1,13 +1,16 @@
-package connection;
+package core;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
-import others.MessageType;
+import model.GattyMessage;
+import model.Header;
 
 import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import common.MessageType;
 
 /**
  * Created by hasee on 2017/11/28.

@@ -1,4 +1,4 @@
-package connection;
+package core;
 
 import org.jboss.marshalling.MarshallerFactory;
 import org.jboss.marshalling.Marshalling;
@@ -16,7 +16,7 @@ public class MarshallingCodeCFactory {
 		MarshallingConfiguration configuration = new MarshallingConfiguration();
 		configuration.setVersion(5);
 		UnmarshallerProvider provider = new DefaultUnmarshallerProvider(marshallerFactory, configuration);
-		GattyMarshallingDecoder decoder = new GattyMarshallingDecoder(provider, 10240);
+		GattyMarshallingDecoder decoder = new GattyMarshallingDecoder(provider);
 		return decoder;
 	}
 	

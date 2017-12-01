@@ -1,4 +1,4 @@
-package connection;
+package model;
 /**
  * Created by hasee on 2017/11/27.
  */

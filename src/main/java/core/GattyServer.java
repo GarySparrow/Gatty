@@ -1,8 +1,5 @@
-package others;
-import connection.GattyMessageDecoder;
-import connection.GattyMessageEncoder;
-import connection.HeartBeatRespHandler;
-import connection.LoginAuthRespHandler;
+package core;
+import common.GattyConstant;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
@@ -21,7 +18,7 @@ public class GattyServer {
 	public void bind() throws Exception {
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
-		try {
+		try {			
 			ServerBootstrap b = new ServerBootstrap();
 			b.group(bossGroup, workerGroup)
 				.channel(NioServerSocketChannel.class)

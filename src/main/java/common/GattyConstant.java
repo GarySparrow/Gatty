@@ -1,4 +1,4 @@
-package others;
+package common;
 
 public class GattyConstant {
 	public static final String REMOTEIP = "127.0.0.1";

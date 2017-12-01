@@ -1,4 +1,4 @@
-package others;
+package core;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -14,10 +14,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import connection.GattyMessageDecoder;
-import connection.GattyMessageEncoder;
-import connection.HeartBeatReqHandler;
-import connection.LoginAuthReqHandler;
+import common.GattyConstant;
 
 /**
  * Created by hasee on 2017/11/26.

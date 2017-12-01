@@ -1,11 +1,13 @@
-package connection;
+package core;
 
 
+import common.MessageType;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
-import others.MessageType;
+import model.GattyMessage;
+import model.Header;
 
 public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter{
 	
