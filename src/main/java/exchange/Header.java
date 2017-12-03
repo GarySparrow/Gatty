@@ -1,4 +1,4 @@
-package model;
+package exchange;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +11,6 @@ public final class Header {
     private long sessionId;
     private byte type;
     private byte priority;
-    private Map<String, Object> external = new HashMap<>();
 
     public int getCrcCode() {
         return crcCode;
@@ -52,20 +51,12 @@ public final class Header {
     public void setPriority(byte priority) {
         this.priority = priority;
     }
-
-    public Map<String, Object> getExternal() {
-        return external;
-    }
-
-    public void setExternal(Map<String, Object> external) {
-        this.external = external;
-    }
     
     @Override
     public String toString() {
     	// TODO Auto-generated method stub
         return "Header [crcCode=" + crcCode + ", length=" + length  
                 + ", sessionId=" + sessionId + ", type=" + type + ", priority="  
-                + priority + ", externtal=" + external + "]";  
+                + priority + "]";
     }
 }

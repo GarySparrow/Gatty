@@ -1,11 +1,9 @@
-package core;
+package transport;
 import common.MessageType;
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
-import model.GattyMessage;
-import model.Header;
+import exchange.model.GattyMessage;
+import exchange.model.Header;
 
 
 /**

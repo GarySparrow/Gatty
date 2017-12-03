@@ -1,4 +1,4 @@
-package remote;
+package protocol;
 
 import java.lang.reflect.Method;
 

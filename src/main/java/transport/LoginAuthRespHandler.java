@@ -1,10 +1,8 @@
-package core;
-import io.netty.channel.ChannelHandlerAdapter;
+package transport;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
-import model.GattyMessage;
-import model.Header;
+import exchange.model.GattyMessage;
+import exchange.model.Header;
 
 import java.net.InetSocketAddress;
 import java.util.Map;

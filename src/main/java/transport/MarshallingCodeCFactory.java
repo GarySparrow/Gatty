@@ -1,4 +1,4 @@
-package core;
+package transport;
 
 import org.jboss.marshalling.MarshallerFactory;
 import org.jboss.marshalling.Marshalling;
@@ -8,6 +8,8 @@ import io.netty.handler.codec.marshalling.DefaultMarshallerProvider;
 import io.netty.handler.codec.marshalling.DefaultUnmarshallerProvider;
 import io.netty.handler.codec.marshalling.MarshallerProvider;
 import io.netty.handler.codec.marshalling.UnmarshallerProvider;
+import serialize.GattyMarshallingDecoder;
+import serialize.GattyMarshallingEncoder;
 
 public class MarshallingCodeCFactory {
 	

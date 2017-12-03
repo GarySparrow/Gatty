@@ -1,13 +1,11 @@
-package core;
+package transport;
 
 
 import common.MessageType;
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
-import model.GattyMessage;
-import model.Header;
+import exchange.model.GattyMessage;
+import exchange.model.Header;
 
 public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter{
 	
@@ -17,7 +15,7 @@ public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter{
 		GattyMessage message = (GattyMessage) msg;
 		
 		if (message.getHeader() != null && message.getHeader().getType() == MessageType.HEARTBEAT_REQ.value()) {
-			System.out.println("Receive client heart beat : ---> " + message);
+			System.out.println("Receive transport heart beat : ---> " + message);
 			GattyMessage heartBeat = buildHeartBeat();
 			System.out.println("Send heart beat response message : ---> " + heartBeat);
 			ctx.writeAndFlush(message);

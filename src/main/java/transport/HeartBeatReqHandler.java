@@ -1,15 +1,13 @@
-package core;
+package transport;
 
 import java.util.concurrent.TimeUnit;
 
 import common.MessageType;
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
 import io.netty.util.concurrent.ScheduledFuture;
-import model.GattyMessage;
-import model.Header;
+import exchange.model.GattyMessage;
+import exchange.model.Header;
 
 public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 	private volatile ScheduledFuture<?> heartBeat;

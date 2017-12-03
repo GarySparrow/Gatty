@@ -31,5 +31,5 @@ dependencies {
     compile group: 'org.jboss.marshalling', name: 'jboss-marshalling', version: '2.0.2.Final'
     
     compile group: 'org.jboss.marshalling', name: 'jboss-marshalling-serial', version: '2.0.2.Final'
-    
+
 }
