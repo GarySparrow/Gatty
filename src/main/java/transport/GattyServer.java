@@ -1,5 +1,7 @@
 package transport;
 import common.GattyConstant;
+import exchange.GattyMessageDecoder;
+import exchange.GattyMessageEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -26,7 +28,8 @@ public class GattyServer {
 					@Override
 					protected void initChannel(SocketChannel ch) throws Exception {
 						// TODO Auto-generated method stub
-						ch.pipeline().addLast(new GattyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
+//						ch.pipeline().addLast(new GattyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
+						ch.pipeline().addLast("MessageDecoder", new GattyMessageDecoder());
 						ch.pipeline().addLast("MessageEncoder", new GattyMessageEncoder());
 						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
 						ch.pipeline().addLast("loginAuthHandler", new LoginAuthRespHandler());

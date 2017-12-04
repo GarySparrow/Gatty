@@ -4,8 +4,8 @@ package transport;
 import common.MessageType;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import exchange.model.GattyMessage;
-import exchange.model.Header;
+import exchange.GattyMessage;
+import exchange.Header;
 
 public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter{
 	

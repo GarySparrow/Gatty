@@ -25,6 +25,7 @@ public class GattyMessageDecoder extends ChannelInboundHandlerAdapter implements
         super.channelRead(ctx, msg);
         ByteBuf buf = (ByteBuf) msg;
         GattyMessage gatty = (GattyMessage) decode(ctx, buf);
+        ctx.fireChannelRead(gatty);
     }
 
     @Override

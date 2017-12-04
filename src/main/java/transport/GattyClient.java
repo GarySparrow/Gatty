@@ -1,4 +1,6 @@
 package transport;
+import exchange.GattyMessageDecoder;
+import exchange.GattyMessageEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -32,7 +34,8 @@ public class GattyClient {
 					@Override
 					protected void initChannel(SocketChannel ch) throws Exception {
 						// TODO Auto-generated method stub
-						ch.pipeline().addLast(new GattyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
+//						ch.pipeline().addLast(new GattyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
+						ch.pipeline().addLast("MessageDecoder", new GattyMessageDecoder());
 						ch.pipeline().addLast("MessageEncoder", new GattyMessageEncoder());
 						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
 						ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());

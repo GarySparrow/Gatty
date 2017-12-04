@@ -25,6 +25,7 @@ public class GattyMessageEncoder extends ChannelInboundHandlerAdapter implements
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         super.channelRead(ctx, msg);
         encode(ctx, msg);
+        ctx.fireChannelRead(msg);
     }
 
     @Override
