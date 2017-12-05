@@ -4,6 +4,8 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelPromise;
 import serialize.GattyMarshallingEncoder;
 import serialize.MarshallingCodeCFactory;
 
@@ -13,7 +15,7 @@ import java.util.Map;
 /**
  * Created by hasee on 2017/12/3.
  */
-public class GattyEncoder extends ChannelInboundHandlerAdapter implements Encoder {
+public class GattyEncoder extends ChannelOutboundHandlerAdapter implements Encoder {
 
     private GattyMarshallingEncoder marshallingEncoder;
 
@@ -22,14 +24,15 @@ public class GattyEncoder extends ChannelInboundHandlerAdapter implements Encode
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        super.channelRead(ctx, msg);
-        encode(ctx, msg);
-        ctx.fireChannelRead(msg);
+    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
+        super.write(ctx, msg, promise);
+        ByteBuf buf = encode(ctx, msg);
+        ctx.write(buf);
     }
 
+
     @Override
-    public void encode(ChannelHandlerContext ctx, Object obj) throws Exception{
+    public ByteBuf encode(ChannelHandlerContext ctx, Object obj) throws Exception{
         Request req = (Request) obj;
         Header header = req.getHeader();
         URL url = (URL) req.getBody();
@@ -59,9 +62,11 @@ public class GattyEncoder extends ChannelInboundHandlerAdapter implements Encode
 
         String sb = buildURL(req);
         marshallingEncoder.encode(ctx, value, buf);
+
+        return buf;
     }
 
-    //copy from dubbo: protocol://username:password@host:port/path
+    //copy from dubbo: protocol://username:password@class/method
     private String buildURL(Request req) {
     	URL url = (URL) req.getBody();
         StringBuilder sb = new StringBuilder();

@@ -9,6 +9,8 @@ public class URL {
     private String host = "";
     private int port = 0;
     private String path = "";
+    private String className;
+    private String method;
     private Map<String, Object> attachment = null;
     
     public URL() {
@@ -56,5 +58,21 @@ public class URL {
 	}
 	public void setAttachment(Map<String, Object> attachment) {
 		this.attachment = attachment;
+	}
+
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
 	}
 }
