@@ -1,7 +1,12 @@
 package exchange;
 
+import java.util.Map;
+
 /**
- * Created by hasee on 2017/12/3.
+ * Created by hasee on 2017/11/27.
  */
-public class Request {
+
+
+public class Request extends Message{
+	
 }

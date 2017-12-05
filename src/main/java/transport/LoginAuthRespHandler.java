@@ -1,8 +1,8 @@
 package transport;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import exchange.model.GattyMessage;
-import exchange.model.Header;
+import exchange.Request;
+import exchange.Header;
 
 import java.net.InetSocketAddress;
 import java.util.Map;
@@ -54,12 +54,12 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
     	// TODO Auto-generated method stub
-    	GattyMessage message = (GattyMessage) msg;
+    	Request message = (Request) msg;
 
         if (message.getHeader() != null
                 && message.getHeader().getType() == MessageType.LOGIN_REQ.value()) {
             String nodeIndex = ctx.channel().remoteAddress().toString();
-            GattyMessage loginResp = null;
+            Request loginResp = null;
             if (nodeCheck.containsKey(nodeIndex)) {
                 loginResp = buildResponse((byte) -1);
             } else {
@@ -84,8 +84,8 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
         }    
     }
 
-    private GattyMessage buildResponse(byte result) {
-        GattyMessage message = new GattyMessage();
+    private Request buildResponse(byte result) {
+        Request message = new Request();
         Header header = new Header();
         header.setType(MessageType.LOGIN_RESP.value());
         message.setHeader(header);

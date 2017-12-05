@@ -5,7 +5,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import serialize.GattyMarshallingEncoder;
-import transport.MarshallingCodeCFactory;
+import serialize.MarshallingCodeCFactory;
 
 import java.io.IOException;
 import java.util.Map;
@@ -13,11 +13,11 @@ import java.util.Map;
 /**
  * Created by hasee on 2017/12/3.
  */
-public class GattyMessageEncoder extends ChannelInboundHandlerAdapter implements Encoder {
+public class GattyEncoder extends ChannelInboundHandlerAdapter implements Encoder {
 
     private GattyMarshallingEncoder marshallingEncoder;
 
-    public GattyMessageEncoder() throws IOException {
+    public GattyEncoder() throws IOException {
         this.marshallingEncoder = MarshallingCodeCFactory.buildMarshallingEncoder();
     }
 
@@ -30,19 +30,22 @@ public class GattyMessageEncoder extends ChannelInboundHandlerAdapter implements
 
     @Override
     public void encode(ChannelHandlerContext ctx, Object obj) throws Exception{
-        GattyMessage msg = (GattyMessage) obj;
+        Request req = (Request) obj;
+        Header header = req.getHeader();
+        URL url = (URL) req.getBody();
+        
         ByteBuf buf = Unpooled.buffer();
-        buf.writeInt(msg.getHeader().getCrcCode());
-        buf.writeInt(msg.getHeader().getLength());
-        buf.writeLong(msg.getHeader().getSessionId());
-        buf.writeByte(msg.getHeader().getType());
-        buf.writeByte(msg.getHeader().getPriority());
+        buf.writeInt(header.getCrcCode());
+        buf.writeInt(header.getLength());
+        buf.writeLong(header.getSessionId());
+        buf.writeByte(header.getType());
+        buf.writeByte(header.getPriority());
 
-        buf.writeInt(msg.getAttachment().size());
+        buf.writeInt(url.getAttachment().size());
         String key = null;
         byte[] keyArray = null;
         Object value = null;
-        for (Map.Entry<String, Object> param : msg.getAttachment().entrySet()) {
+        for (Map.Entry<String, Object> param : url.getAttachment().entrySet()) {
             key = param.getKey();
             keyArray = key.getBytes("UTF-8");
             buf.writeInt(keyArray.length);
@@ -54,26 +57,27 @@ public class GattyMessageEncoder extends ChannelInboundHandlerAdapter implements
         keyArray = null;
         value = null;
 
-        String sb = buildURL(msg);
+        String sb = buildURL(req);
         marshallingEncoder.encode(ctx, value, buf);
     }
 
     //copy from dubbo: protocol://username:password@host:port/path
-    private String buildURL(GattyMessage msg) {
+    private String buildURL(Request req) {
+    	URL url = (URL) req.getBody();
         StringBuilder sb = new StringBuilder();
-        sb.append(msg.getProtocol());
+        sb.append(url.getProtocol());
         sb.append("://");
-        if (!"".equals(msg.getUsername())) {
-            sb.append(msg.getUsername());
+        if (!"".equals(url.getUsername())) {
+            sb.append(url.getUsername());
             sb.append(":");
-            sb.append(msg.getPassword());
+            sb.append(url.getPassword());
             sb.append("@");
         }
-        sb.append(msg.getHost());
+        sb.append(url.getHost());
         sb.append(":");
-        sb.append(msg.getPort());
+        sb.append(url.getPort());
         sb.append("/");
-        sb.append(msg.getPath());
+        sb.append(url.getPath());
         return sb.toString();
     }
 }

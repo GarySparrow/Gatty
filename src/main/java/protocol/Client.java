@@ -1,6 +1,6 @@
-package transport;
-import exchange.GattyMessageDecoder;
-import exchange.GattyMessageEncoder;
+package protocol;
+import exchange.GattyDecoder;
+import exchange.GattyEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -10,6 +10,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
+import transport.HeartBeatReqHandler;
+import transport.LoginAuthReqHandler;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
@@ -21,7 +23,7 @@ import common.GattyConstant;
 /**
  * Created by hasee on 2017/11/26.
  */
-public class GattyClient {
+public class Client {
     private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     EventLoopGroup group = new NioEventLoopGroup();
     
@@ -35,8 +37,8 @@ public class GattyClient {
 					protected void initChannel(SocketChannel ch) throws Exception {
 						// TODO Auto-generated method stub
 //						ch.pipeline().addLast(new GattyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
-						ch.pipeline().addLast("MessageDecoder", new GattyMessageDecoder());
-						ch.pipeline().addLast("MessageEncoder", new GattyMessageEncoder());
+						ch.pipeline().addLast("MessageDecoder", new GattyDecoder());
+						ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
 						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
 						ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
 						ch.pipeline().addLast("HeartBeatHandler", new HeartBeatReqHandler());
@@ -67,6 +69,6 @@ public class GattyClient {
     }
     
     public static void main(String[] args) throws Exception{
-    	new GattyClient().connect(GattyConstant.REMOTEIP, GattyConstant.PORT);
+    	new Client().connect(GattyConstant.REMOTEIP, GattyConstant.PORT);
     }
 }

@@ -4,7 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import serialize.GattyMarshallingDecoder;
-import transport.MarshallingCodeCFactory;
+import serialize.MarshallingCodeCFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,24 +13,25 @@ import java.util.Map;
 /**
  * Created by hasee on 2017/12/3.
  */
-public class GattyMessageDecoder extends ChannelInboundHandlerAdapter implements Decoder{
+public class GattyDecoder extends ChannelInboundHandlerAdapter implements Decoder{
 
     private GattyMarshallingDecoder marshallingDecoder;
 
-    public GattyMessageDecoder() throws IOException {
+    public GattyDecoder() throws IOException {
         marshallingDecoder = MarshallingCodeCFactory.buildMarshallingDecoder();
     }
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         super.channelRead(ctx, msg);
         ByteBuf buf = (ByteBuf) msg;
-        GattyMessage gatty = (GattyMessage) decode(ctx, buf);
+        Request gatty = (Request) decode(ctx, buf);
         ctx.fireChannelRead(gatty);
     }
 
     @Override
     public Object decode(ChannelHandlerContext ctx, ByteBuf buf) throws Exception{
-        GattyMessage msg = new GattyMessage();
+        Request req = new Request();
+        URL url = new URL();
         Header header = new Header();
         header.setCrcCode(buf.readInt());
         header.setLength(buf.readInt());
@@ -53,7 +54,7 @@ public class GattyMessageDecoder extends ChannelInboundHandlerAdapter implements
             }
             keyArray = null;
             key = null;
-            msg.setAttachment(attachment);
+            url.setAttachment(attachment);
         }
         //copy from dubbo: protocol://username:password@host:port/path
         if (buf.readableBytes() > 0) {
@@ -83,15 +84,16 @@ public class GattyMessageDecoder extends ChannelInboundHandlerAdapter implements
             path = URL.substring(start, URL.length());
 
 
-            msg.setProtocol(protocol);
-            msg.setHost(host);
-            msg.setUsername(username);
-            msg.setPassword(password);
-            msg.setPath(path);
-            msg.setPort(Integer.valueOf(port));
+            url.setProtocol(protocol);
+            url.setHost(host);
+            url.setUsername(username);
+            url.setPassword(password);
+            url.setPath(path);
+            url.setPort(Integer.valueOf(port));
         }
-        msg.setHeader(header);
-
-        return msg;
+        req.setHeader(header);
+        req.setBody(url);
+        
+        return req;
     }
 }

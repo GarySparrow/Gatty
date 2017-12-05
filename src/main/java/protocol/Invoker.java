@@ -2,6 +2,8 @@ package protocol;
 
 import java.lang.reflect.Method;
 
+import exchange.URL;
+
 public interface Invoker {
-	void invoke(Class T, Method method);
+	void invoke(URL url);
 }
