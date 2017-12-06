@@ -1,5 +1,9 @@
 package protocol;
 
-public class ExportFilter {
-	private Exporter exporter;
+public class ExportFilter implements Interceptor{
+	@Override
+	public void intercept() {
+		// TODO Auto-generated method stub
+		
+	}
 }

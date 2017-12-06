@@ -1,7 +1,10 @@
 package protocol;
 
-public class InvokeFilter {
-	private Invoker invoker;
+public class InvokeFilter implements Interceptor{
 	
-	
+	@Override
+	public void intercept() {
+		// TODO Auto-generated method stub
+		
+	}
 }

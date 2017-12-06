@@ -5,5 +5,5 @@ import java.lang.reflect.Method;
 import exchange.URL;
 
 public interface Invoker {
-	void invoke(URL url);
+	Object invoke(URL url);
 }

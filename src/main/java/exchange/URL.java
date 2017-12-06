@@ -10,7 +10,7 @@ public class URL {
     private int port = 0;
     private String path = "";
     private String className;
-    private String method;
+    private String methodName;
     private Map<String, Object> attachment = null;
     
     public URL() {
@@ -68,11 +68,11 @@ public class URL {
 		this.className = className;
 	}
 
-	public String getMethod() {
-		return method;
+	public String getMethodName() {
+		return methodName;
 	}
 
-	public void setMethod(String method) {
-		this.method = method;
+	public void setMethodName(String methodName) {
+		this.methodName = methodName;
 	}
 }

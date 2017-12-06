@@ -16,7 +16,7 @@ public class GattyRespHandler extends ChannelInboundHandlerAdapter{
 		Response response = (Response) msg;
 		if (response.getHeader() != null && response.getHeader().getType() == MessageType.GATTY_REQ.value()) {
 			Header header = response.getHeader();
-			
+			// handle the return
 		}
 	}
 
@@ -26,4 +26,5 @@ public class GattyRespHandler extends ChannelInboundHandlerAdapter{
 		// TODO Auto-generated method stub
 		super.exceptionCaught(ctx, cause);
 	}
+	
 }
