@@ -10,6 +10,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.ReadTimeoutHandler;
+import transport.GattyReqHandler;
+import transport.GattyRespHandler;
 import transport.HeartBeatRespHandler;
 import transport.LoginAuthRespHandler;
 
@@ -34,6 +36,7 @@ public class Server {
 						ch.pipeline().addLast("MessageDecoder", new GattyDecoder());
 						ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
 						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
+						ch.pipeline().addLast("GattyHandler", new GattyRespHandler());
 						ch.pipeline().addLast("loginAuthHandler", new LoginAuthRespHandler());
 						ch.pipeline().addLast("heartBeatHandler", new HeartBeatRespHandler());
 					}

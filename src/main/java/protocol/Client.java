@@ -10,6 +10,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
+import transport.GattyReqHandler;
 import transport.HeartBeatReqHandler;
 import transport.LoginAuthReqHandler;
 
@@ -40,6 +41,7 @@ public class Client {
 						ch.pipeline().addLast("MessageDecoder", new GattyDecoder());
 						ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
 						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
+						ch.pipeline().addLast("GattyHandler", new GattyReqHandler());
 						ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
 						ch.pipeline().addLast("HeartBeatHandler", new HeartBeatReqHandler());
 					}

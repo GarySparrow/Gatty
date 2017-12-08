@@ -25,7 +25,6 @@ public class GattyEncoder extends ChannelOutboundHandlerAdapter implements Encod
 
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-        super.write(ctx, msg, promise);
         ByteBuf buf = encode(ctx, msg);
         ctx.write(buf);
     }

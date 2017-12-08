@@ -16,18 +16,25 @@ import protocol.URLInvoker;
 public class GattyReqHandler extends ChannelInboundHandlerAdapter {
 	
 	@Override
+	public void channelActive(ChannelHandlerContext ctx) throws Exception {
+		// TODO Auto-generated method stub
+		ctx.writeAndFlush(buildGattyRequest());
+		System.out.println("sent gatty request.");
+	}
+	
+	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		// TODO Auto-generated method stub
 		super.channelRead(ctx, msg);
 		Request req = (Request) msg;
 		if (req.getHeader() != null && req.getHeader().getType() == MessageType.GATTY_RESP.value()) {
-			URL url = (URL) req.getBody();
-			Invoker invoke = new URLInvoker(url);
-			
+			System.out.println("receive gatty response.");
+//			URL url = (URL) req.getBody();
+//			Invoker invoke = new URLInvoker(url);
+		} else {
+			ctx.fireChannelRead(msg);
 		}
 	}
-	
-	
 	
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
@@ -35,11 +42,11 @@ public class GattyReqHandler extends ChannelInboundHandlerAdapter {
 		super.exceptionCaught(ctx, cause);
 	}
 	
-	private Response buildGattyResponse() {
-		Response response = new Response();
+	private Request buildGattyRequest() {
+		Request request = new Request();
 		Header header = new Header();
 		header.setType(MessageType.GATTY_REQ.value());
-		response.setHeader(header);
-		return response;
+		request.setHeader(header);
+		return request;
 	}
 }

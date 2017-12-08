@@ -17,6 +17,10 @@ public class GattyRespHandler extends ChannelInboundHandlerAdapter{
 		if (response.getHeader() != null && response.getHeader().getType() == MessageType.GATTY_REQ.value()) {
 			Header header = response.getHeader();
 			// handle the return
+			System.out.println("receive the gatty request");
+			ctx.writeAndFlush(buildGattyResponse());
+		} else {
+			ctx.fireChannelRead(msg);
 		}
 	}
 
@@ -27,4 +31,11 @@ public class GattyRespHandler extends ChannelInboundHandlerAdapter{
 		super.exceptionCaught(ctx, cause);
 	}
 	
+	private Response buildGattyResponse() {
+		Response response = new Response();
+		Header header = new Header();
+		header.setType(MessageType.GATTY_REQ.value());
+		response.setHeader(header);
+		return response;
+	}
 }
