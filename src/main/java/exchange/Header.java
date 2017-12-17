@@ -11,6 +11,7 @@ public final class Header {
     private long sessionId;
     private byte type;
     private byte priority;
+    private Map<String, Object> attachment;
 
     public int getCrcCode() {
         return crcCode;
@@ -51,7 +52,15 @@ public final class Header {
     public void setPriority(byte priority) {
         this.priority = priority;
     }
-    
+
+    public Map<String, Object> getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(Map<String, Object> attachment) {
+        this.attachment = attachment;
+    }
+
     @Override
     public String toString() {
     	// TODO Auto-generated method stub

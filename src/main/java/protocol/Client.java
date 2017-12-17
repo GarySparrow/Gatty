@@ -10,9 +10,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
-import transport.GattyReqHandler;
-import transport.HeartBeatReqHandler;
-import transport.LoginAuthReqHandler;
+import transport.*;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
@@ -38,10 +36,11 @@ public class Client {
 					protected void initChannel(SocketChannel ch) throws Exception {
 						// TODO Auto-generated method stub
 //						ch.pipeline().addLast(new GattyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
-						ch.pipeline().addLast("MessageDecoder", new GattyDecoder());
+//						ch.pipeline().addLast(new GattyMessageEncoder());
+						ch.pipeline().addLast("MessageDecoder", new GattyDecoder(1024 * 1024, 4, 4, -8, 0));
 						ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
-						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
-						ch.pipeline().addLast("GattyHandler", new GattyReqHandler());
+						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(5));
+//						ch.pipeline().addLast("GattyHandler", new GattyReqHandler());
 						ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
 						ch.pipeline().addLast("HeartBeatHandler", new HeartBeatReqHandler());
 					}
@@ -55,7 +54,7 @@ public class Client {
 		} finally {
 			executor.execute( () -> {
 				try {
-					TimeUnit.SECONDS.sleep(1);
+					TimeUnit.SECONDS.sleep(5);
 					try {
 						connect(GattyConstant.REMOTEIP, GattyConstant.PORT);
 					} catch (Exception e) {

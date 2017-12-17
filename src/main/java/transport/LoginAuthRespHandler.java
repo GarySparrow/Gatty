@@ -1,4 +1,6 @@
 package transport;
+import exchange.Message;
+import exchange.Response;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import exchange.Request;
@@ -54,12 +56,12 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
     	// TODO Auto-generated method stub
-    	Request message = (Request) msg;
+        Message message = (Message) msg;
 
         if (message.getHeader() != null
                 && message.getHeader().getType() == MessageType.LOGIN_REQ.value()) {
             String nodeIndex = ctx.channel().remoteAddress().toString();
-            Request loginResp = null;
+            Message loginResp = null;
             if (nodeCheck.containsKey(nodeIndex)) {
                 loginResp = buildResponse((byte) -1);
             } else {
@@ -84,8 +86,8 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
         }    
     }
 
-    private Request buildResponse(byte result) {
-        Request message = new Request();
+    private Message buildResponse(byte result) {
+        Message message = new Response();
         Header header = new Header();
         header.setType(MessageType.LOGIN_RESP.value());
         message.setHeader(header);

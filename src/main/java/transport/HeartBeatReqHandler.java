@@ -3,6 +3,7 @@ package transport;
 import java.util.concurrent.TimeUnit;
 
 import common.MessageType;
+import exchange.Message;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.concurrent.ScheduledFuture;
@@ -15,8 +16,8 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		// TODO Auto-generated method stub
-	
-		Request message = (Request) msg;
+
+		Message message = (Message) msg;
 		if (message.getHeader() != null && message.getHeader().getType() == MessageType.LOGIN_RESP.value()) {
 			heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatReqHandler.HeartBeatTask(ctx), 0, 5000, TimeUnit.MILLISECONDS);
 		} else if (message.getHeader() != null && message.getHeader().getType() == MessageType.HEARTBEAT_RESP.value()) {
@@ -49,13 +50,13 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			Request heartBeat = buildHeartBeat();
+			Message heartBeat = buildHeartBeatReq();
 			System.out.println("Client send heart beat message to server : ---> " + heartBeat);
 			ctx.writeAndFlush(heartBeat);
 		}
 		
-		private Request buildHeartBeat() {
-			Request message = new Request();
+		private Message buildHeartBeatReq() {
+			Message message = new Request();
 			Header header = new Header();
 			header.setType(MessageType.HEARTBEAT_REQ.value());
 			message.setHeader(header);

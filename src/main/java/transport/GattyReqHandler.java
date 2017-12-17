@@ -25,8 +25,9 @@ public class GattyReqHandler extends ChannelInboundHandlerAdapter {
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("reqhandler " + msg.toString());
 		super.channelRead(ctx, msg);
-		Request req = (Request) msg;
+		Message req = (Message) msg;
 		if (req.getHeader() != null && req.getHeader().getType() == MessageType.GATTY_RESP.value()) {
 			System.out.println("receive gatty response.");
 //			URL url = (URL) req.getBody();
@@ -42,8 +43,8 @@ public class GattyReqHandler extends ChannelInboundHandlerAdapter {
 		super.exceptionCaught(ctx, cause);
 	}
 	
-	private Request buildGattyRequest() {
-		Request request = new Request();
+	private Message buildGattyRequest() {
+		Message request = new Request();
 		Header header = new Header();
 		header.setType(MessageType.GATTY_REQ.value());
 		request.setHeader(header);

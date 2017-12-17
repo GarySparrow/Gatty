@@ -6,16 +6,18 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelOutboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
+import io.netty.handler.codec.MessageToMessageEncoder;
 import serialize.GattyMarshallingEncoder;
 import serialize.MarshallingCodeCFactory;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by hasee on 2017/12/3.
  */
-public class GattyEncoder extends ChannelOutboundHandlerAdapter implements Encoder {
+public class GattyEncoder extends MessageToMessageEncoder<Message> {
 
     private GattyMarshallingEncoder marshallingEncoder;
 
@@ -23,19 +25,13 @@ public class GattyEncoder extends ChannelOutboundHandlerAdapter implements Encod
         this.marshallingEncoder = MarshallingCodeCFactory.buildMarshallingEncoder();
     }
 
-    @Override
-    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-        ByteBuf buf = encode(ctx, msg);
-        ctx.write(buf);
-    }
-
 
     @Override
-    public ByteBuf encode(ChannelHandlerContext ctx, Object obj) throws Exception{
-        Request req = (Request) obj;
-        Header header = req.getHeader();
-        URL url = (URL) req.getBody();
-        
+    protected void encode(ChannelHandlerContext ctx, Message msg, List<Object> out) throws Exception {
+        System.out.println("encode begin...");
+
+        Header header = msg.getHeader();
+
         ByteBuf buf = Unpooled.buffer();
         buf.writeInt(header.getCrcCode());
         buf.writeInt(header.getLength());
@@ -43,31 +39,55 @@ public class GattyEncoder extends ChannelOutboundHandlerAdapter implements Encod
         buf.writeByte(header.getType());
         buf.writeByte(header.getPriority());
 
-        buf.writeInt(url.getAttachment().size());
         String key = null;
         byte[] keyArray = null;
         Object value = null;
-        for (Map.Entry<String, Object> param : url.getAttachment().entrySet()) {
-            key = param.getKey();
-            keyArray = key.getBytes("UTF-8");
-            buf.writeInt(keyArray.length);
-            buf.writeBytes(keyArray);
-            value = param.getValue();
-            marshallingEncoder.encode(ctx, value, buf);
+
+        if (header.getAttachment() != null) {
+            buf.writeByte(header.getAttachment().size());
+            for (Map.Entry<String, Object> param : header.getAttachment().entrySet()) {
+                key = param.getKey();
+                keyArray = key.getBytes("UTF-8");
+                buf.writeInt(keyArray.length);
+                buf.writeBytes(keyArray);
+                value = param.getValue();
+                marshallingEncoder.encode(ctx, value, buf);
+            }
+        } else {
+            buf.writeInt(0);
         }
-        key = null;
-        keyArray = null;
-        value = null;
 
-        String sb = buildURL(req);
-        marshallingEncoder.encode(ctx, value, buf);
+        if (msg.getBody() != null) {
+            URL url = (URL) msg.getBody();
+            String sb = buildURL(msg);
+            marshallingEncoder.encode(ctx, sb, buf);
 
-        return buf;
+            if (url.getAttachment() != null) {
+                buf.writeInt(url.getAttachment().size());
+                for (Map.Entry<String, Object> param : url.getAttachment().entrySet()) {
+                    key = param.getKey();
+                    keyArray = key.getBytes("UTF-8");
+                    buf.writeInt(keyArray.length);
+                    buf.writeBytes(keyArray);
+                    value = param.getValue();
+                    marshallingEncoder.encode(ctx, value, buf);
+                }
+            } else {
+                buf.writeInt(0);
+            }
+        }
+
+
+        int readableBytes = buf.readableBytes();
+        buf.setInt(4, readableBytes);
+
+        System.out.println("encode:" + buf);
+        out.add(buf);
     }
 
     //copy from dubbo: protocol://username:password@class/method
-    private String buildURL(Request req) {
-    	URL url = (URL) req.getBody();
+    private String buildURL(Message msg) {
+    	URL url = (URL) msg.getBody();
         StringBuilder sb = new StringBuilder();
         sb.append(url.getProtocol());
         sb.append("://");

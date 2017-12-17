@@ -10,10 +10,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.ReadTimeoutHandler;
-import transport.GattyReqHandler;
-import transport.GattyRespHandler;
-import transport.HeartBeatRespHandler;
-import transport.LoginAuthRespHandler;
+import transport.*;
 
 /**
  * Created by hasee on 2017/11/24.
@@ -33,10 +30,11 @@ public class Server {
 					protected void initChannel(SocketChannel ch) throws Exception {
 						// TODO Auto-generated method stub
 //						ch.pipeline().addLast(new GattyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
-						ch.pipeline().addLast("MessageDecoder", new GattyDecoder());
+//						ch.pipeline().addLast(new GattyMessageEncoder());
+						ch.pipeline().addLast("MessageDecoder", new GattyDecoder(1024 * 1024, 4, 4, -8, 0));
 						ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
-						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
-						ch.pipeline().addLast("GattyHandler", new GattyRespHandler());
+						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(5));
+//						ch.pipeline().addLast("GattyHandler", new GattyRespHandler());
 						ch.pipeline().addLast("loginAuthHandler", new LoginAuthRespHandler());
 						ch.pipeline().addLast("heartBeatHandler", new HeartBeatRespHandler());
 					}
