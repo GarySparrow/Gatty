@@ -10,11 +10,14 @@ import serialize.MarshallingCodeCFactory;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Created by hasee on 2017/12/3.
  */
 public class GattyDecoder extends LengthFieldBasedFrameDecoder {
+
+    private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
 
     private GattyMarshallingDecoder marshallingDecoder;
 
@@ -59,7 +62,6 @@ public class GattyDecoder extends LengthFieldBasedFrameDecoder {
 
     @Override
     protected Object decode(ChannelHandlerContext ctx, ByteBuf in) throws Exception {
-        System.out.println("decode begin...");
 
         ByteBuf buf = (ByteBuf) super.decode(ctx, in);
 
@@ -153,7 +155,6 @@ public class GattyDecoder extends LengthFieldBasedFrameDecoder {
 
         msg.setHeader(header);
 
-        System.out.println("decode: " + msg);
         return msg;
     }
 }

@@ -13,11 +13,14 @@ import serialize.MarshallingCodeCFactory;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Created by hasee on 2017/12/3.
  */
 public class GattyEncoder extends MessageToMessageEncoder<Message> {
+
+    private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
 
     private GattyMarshallingEncoder marshallingEncoder;
 
@@ -28,7 +31,6 @@ public class GattyEncoder extends MessageToMessageEncoder<Message> {
 
     @Override
     protected void encode(ChannelHandlerContext ctx, Message msg, List<Object> out) throws Exception {
-        System.out.println("encode begin...");
 
         Header header = msg.getHeader();
 
@@ -58,30 +60,30 @@ public class GattyEncoder extends MessageToMessageEncoder<Message> {
         }
 
         if (msg.getBody() != null) {
-            URL url = (URL) msg.getBody();
-            String sb = buildURL(msg);
-            marshallingEncoder.encode(ctx, sb, buf);
-
-            if (url.getAttachment() != null) {
-                buf.writeInt(url.getAttachment().size());
-                for (Map.Entry<String, Object> param : url.getAttachment().entrySet()) {
-                    key = param.getKey();
-                    keyArray = key.getBytes("UTF-8");
-                    buf.writeInt(keyArray.length);
-                    buf.writeBytes(keyArray);
-                    value = param.getValue();
-                    marshallingEncoder.encode(ctx, value, buf);
-                }
-            } else {
-                buf.writeInt(0);
-            }
+            marshallingEncoder.encode(ctx, msg.getBody(), buf);
+//            URL url = (URL) msg.getBody();
+//            String sb = buildURL(msg);
+//            marshallingEncoder.encode(ctx, sb, buf);
+//
+//            if (url.getAttachment() != null) {
+//                buf.writeInt(url.getAttachment().size());
+//                for (Map.Entry<String, Object> param : url.getAttachment().entrySet()) {
+//                    key = param.getKey();
+//                    keyArray = key.getBytes("UTF-8");
+//                    buf.writeInt(keyArray.length);
+//                    buf.writeBytes(keyArray);
+//                    value = param.getValue();
+//                    marshallingEncoder.encode(ctx, value, buf);
+//                }
+//            } else {
+//                buf.writeInt(0);
+//            }
         }
 
 
         int readableBytes = buf.readableBytes();
         buf.setInt(4, readableBytes);
 
-        System.out.println("encode:" + buf);
         out.add(buf);
     }
 

@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import exchange.URL;
+import io.netty.channel.ChannelHandlerContext;
 
 public class URLInvoker implements Invoker {
 	
@@ -17,7 +18,7 @@ public class URLInvoker implements Invoker {
 	}
 	
 	@Override
-	public Object invoke(URL url) {
+	public Object invoke(ChannelHandlerContext ctx) {
 		// TODO Auto-generated method stub
 		String className = url.getClassName();
 		String methodName = url.getMethodName();
@@ -37,10 +38,13 @@ public class URLInvoker implements Invoker {
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		return null;

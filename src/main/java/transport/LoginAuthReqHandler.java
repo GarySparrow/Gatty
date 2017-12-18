@@ -6,16 +6,21 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import exchange.Request;
 import exchange.Header;
 
+import java.util.logging.Logger;
+
 
 /**
  * Created by hasee on 2017/11/28.
  */
 public class LoginAuthReqHandler extends ChannelInboundHandlerAdapter{
- 
+
+    private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ctx.writeAndFlush(buildLoginReq());
-        System.out.println("sending login request");
+        logger.info("sending login request");
     }
 
     @Override
@@ -26,7 +31,7 @@ public class LoginAuthReqHandler extends ChannelInboundHandlerAdapter{
             if (loginResult != (byte) 0) {
                 ctx.close();
             } else {
-                System.out.println("Login successfully :" + message);
+                logger.info("Login successfully :" + message);
                 ctx.fireChannelRead(msg);
             }
         } else {

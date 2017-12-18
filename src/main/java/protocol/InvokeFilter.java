@@ -1,10 +1,14 @@
 package protocol;
 
-public class InvokeFilter implements Interceptor{
+import io.netty.channel.ChannelHandlerContext;
+
+public class InvokeFilter implements Filter {
 	
 	@Override
-	public void intercept() {
+	public boolean intercept(ChannelHandlerContext ctx) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
+
+
 }

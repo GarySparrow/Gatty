@@ -8,18 +8,24 @@ import exchange.Response;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.logging.Logger;
+
 public class GattyRespHandler extends ChannelInboundHandlerAdapter{
-	
+
+	private ExecutorService tp = Executors.newFixedThreadPool(8);
+	private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("resphandler " + msg.toString());
 		super.channelRead(ctx, msg);
 		Message response = (Message) msg;
 		if (response.getHeader() != null && response.getHeader().getType() == MessageType.GATTY_REQ.value()) {
 			Header header = response.getHeader();
 			// handle the return
-			System.out.println("receive the gatty request");
+
 			ctx.writeAndFlush(buildGattyResponse());
 		} else {
 			ctx.fireChannelRead(msg);
@@ -40,4 +46,5 @@ public class GattyRespHandler extends ChannelInboundHandlerAdapter{
 		response.setHeader(header);
 		return response;
 	}
+
 }

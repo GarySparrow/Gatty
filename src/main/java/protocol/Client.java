@@ -1,6 +1,6 @@
 package protocol;
-import exchange.GattyDecoder;
-import exchange.GattyEncoder;
+import common.MessageType;
+import exchange.*;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -13,9 +13,11 @@ import io.netty.handler.timeout.ReadTimeoutHandler;
 import transport.*;
 
 import java.net.InetSocketAddress;
+import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import common.GattyConstant;
 
@@ -23,7 +25,10 @@ import common.GattyConstant;
  * Created by hasee on 2017/11/26.
  */
 public class Client {
-    private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+
+	private ChannelFuture future;
+	private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+	private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     EventLoopGroup group = new NioEventLoopGroup();
     
     public void connect(String host, int port) throws Exception{
@@ -39,15 +44,16 @@ public class Client {
 //						ch.pipeline().addLast(new GattyMessageEncoder());
 						ch.pipeline().addLast("MessageDecoder", new GattyDecoder(1024 * 1024, 4, 4, -8, 0));
 						ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
-						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(5));
+						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(10));
 //						ch.pipeline().addLast("GattyHandler", new GattyReqHandler());
 						ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
 						ch.pipeline().addLast("HeartBeatHandler", new HeartBeatReqHandler());
 					}
 				});
-			ChannelFuture future = b.connect(new InetSocketAddress(host, port), 
+			future = b.connect(new InetSocketAddress(host, port),
 					new InetSocketAddress(GattyConstant.LOCALIP, GattyConstant.LOCAL_PORT)).sync();
 			future.channel().closeFuture().sync();
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -68,8 +74,36 @@ public class Client {
 			});
 		}
     }
-    
+
     public static void main(String[] args) throws Exception{
     	new Client().connect(GattyConstant.REMOTEIP, GattyConstant.PORT);
     }
+
+
+    //practice: try with lambda;
+	private class ReadListener implements Runnable {
+
+    	private ChannelFuture future;
+
+		@Override
+		public void run() {
+			System.out.println("invoke your method like this:");
+			System.out.println("protocol://username:password@host:port/path");
+			Scanner scan = new Scanner(System.in);
+			while(scan.hasNext()) {
+				String url = scan.next();
+				Message req = buildGattyRequest(url);
+				future.channel().writeAndFlush(req);
+			}
+		}
+
+		private Message buildGattyRequest(String url) {
+			Message request = new Request();
+			Header header = new Header();
+			header.setType(MessageType.GATTY_REQ.value());
+			request.setHeader(header);
+			request.setBody(url);
+			return request;
+		}
+	}
 }

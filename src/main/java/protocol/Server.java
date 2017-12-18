@@ -12,10 +12,15 @@ import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import transport.*;
 
+import java.util.logging.Logger;
+
 /**
  * Created by hasee on 2017/11/24.
  */
 public class Server {
+	private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+
+
 	public void bind() throws Exception {
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -33,14 +38,14 @@ public class Server {
 //						ch.pipeline().addLast(new GattyMessageEncoder());
 						ch.pipeline().addLast("MessageDecoder", new GattyDecoder(1024 * 1024, 4, 4, -8, 0));
 						ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
-						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(5));
+						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(10));
 //						ch.pipeline().addLast("GattyHandler", new GattyRespHandler());
 						ch.pipeline().addLast("loginAuthHandler", new LoginAuthRespHandler());
 						ch.pipeline().addLast("heartBeatHandler", new HeartBeatRespHandler());
 					}
 				});
 			ChannelFuture future = b.bind(GattyConstant.REMOTEIP, GattyConstant.PORT).sync();
-			System.out.println("Gatty server start successfully : " + (GattyConstant.REMOTEIP + " : "
+			logger.info("Gatty server start successfully : " + (GattyConstant.REMOTEIP + " : "
 					+ GattyConstant.PORT));
 			future.channel().closeFuture().sync();
 		} catch (Exception e) {

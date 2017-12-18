@@ -9,6 +9,7 @@ import exchange.Header;
 import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
 import common.MessageType;
 
@@ -18,6 +19,8 @@ import common.MessageType;
 public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
     private Map<String, Boolean> nodeCheck = new ConcurrentHashMap<>();
     private String[] whiteList = {"127.0.0.1"};
+    private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+
 
 //    @Override
 //    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
@@ -79,7 +82,7 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
                     nodeCheck.put(nodeIndex, true);
                 }
             }
-            System.out.println("The login response is : " + loginResp);
+            logger.info("The login response is : " + loginResp);
             ctx.writeAndFlush(loginResp);
         } else {
             ctx.fireChannelRead(msg);

@@ -13,23 +13,23 @@ import protocol.InvokeFilter;
 import protocol.Invoker;
 import protocol.URLInvoker;
 
+import java.util.logging.Logger;
+
 public class GattyReqHandler extends ChannelInboundHandlerAdapter {
-	
+	private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
+
+
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		// TODO Auto-generated method stub
-		ctx.writeAndFlush(buildGattyRequest());
-		System.out.println("sent gatty request.");
 	}
 	
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("reqhandler " + msg.toString());
 		super.channelRead(ctx, msg);
 		Message req = (Message) msg;
 		if (req.getHeader() != null && req.getHeader().getType() == MessageType.GATTY_RESP.value()) {
-			System.out.println("receive gatty response.");
 //			URL url = (URL) req.getBody();
 //			Invoker invoke = new URLInvoker(url);
 		} else {
@@ -42,12 +42,5 @@ public class GattyReqHandler extends ChannelInboundHandlerAdapter {
 		// TODO Auto-generated method stub
 		super.exceptionCaught(ctx, cause);
 	}
-	
-	private Message buildGattyRequest() {
-		Message request = new Request();
-		Header header = new Header();
-		header.setType(MessageType.GATTY_REQ.value());
-		request.setHeader(header);
-		return request;
-	}
+
 }
