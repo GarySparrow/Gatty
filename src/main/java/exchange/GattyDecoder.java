@@ -97,61 +97,6 @@ public class GattyDecoder extends LengthFieldBasedFrameDecoder {
             Object body = marshallingDecoder.decode(ctx,buf);
             msg.setBody(body);
         }
-        //copy from dubbo: protocol://username:password@host:port/path
-//        if (buf.readableBytes() > 0) {
-//            URL url = new URL();
-//            String URL = (String) marshallingDecoder.decode(ctx,buf);
-//            int start = 0, last = URL.indexOf(":");
-//            String protocol = URL.substring(0, last);
-//            start = last + 1;
-//            String username = "";
-//            String password = "";
-//            if (URL.contains("@")) {
-//                last = URL.indexOf(":", start);
-//                username = URL.substring(start, last);
-//                start = last + 1;
-//                last = URL.indexOf("@");
-//                password = URL.substring(start, last);
-//                start = last + 1;
-//            }
-//            String host = "";
-//            String port = "";
-//            last = URL.indexOf(":", start);
-//            host = URL.substring(start, last);
-//            start = last + 1;
-//            last = URL.indexOf("/", start);
-//            port = URL.substring(start, last);
-//            String path = "";
-//            start = last + 1;
-//            path = URL.substring(start, URL.length());
-//
-//
-//            url.setProtocol(protocol);
-//            url.setHost(host);
-//            url.setUsername(username);
-//            url.setPassword(password);
-//            url.setPath(path);
-//            url.setPort(Integer.valueOf(port));
-//
-//            size = buf.readInt();
-//            if (size > 0) {
-//                Map<String, Object> attachment = new HashMap<>();
-//                int keysize = 0;
-//                byte[] keyArray = null;
-//                String key = null;
-//                for (int i = 0; i < size; i++) {
-//                    keysize = buf.readInt();
-//                    keyArray = new byte[keysize];
-//                    buf.readBytes(keyArray);
-//                    key = new String(keyArray, "UTF-8");
-//                    attachment.put(key, marshallingDecoder.decode(ctx,buf));
-//                }
-//
-//                url.setAttachment(attachment);
-//            }
-//
-//            msg.setBody(url);
-//        }
 
         msg.setHeader(header);
 

@@ -18,9 +18,10 @@ public class Invocation {
         this.invokeFilter = invokeFilter;
     }
 
-    public void process(ChannelHandlerContext ctx) {
+    public Object process(ChannelHandlerContext ctx) {
         if (invokeFilter == null || invokeFilter.intercept(ctx)) {
-            invoker.invoke(ctx);
+            return invoker.invoke(ctx);
         }
+        return null;
     }
 }

@@ -87,23 +87,4 @@ public class GattyEncoder extends MessageToMessageEncoder<Message> {
         out.add(buf);
     }
 
-    //copy from dubbo: protocol://username:password@class/method
-    private String buildURL(Message msg) {
-    	URL url = (URL) msg.getBody();
-        StringBuilder sb = new StringBuilder();
-        sb.append(url.getProtocol());
-        sb.append("://");
-        if (!"".equals(url.getUsername())) {
-            sb.append(url.getUsername());
-            sb.append(":");
-            sb.append(url.getPassword());
-            sb.append("@");
-        }
-        sb.append(url.getHost());
-        sb.append(":");
-        sb.append(url.getPort());
-        sb.append("/");
-        sb.append(url.getPath());
-        return sb.toString();
-    }
 }

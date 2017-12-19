@@ -28,10 +28,11 @@ public class GattyReqHandler extends ChannelInboundHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		// TODO Auto-generated method stub
 		super.channelRead(ctx, msg);
-		Message req = (Message) msg;
-		if (req.getHeader() != null && req.getHeader().getType() == MessageType.GATTY_RESP.value()) {
-//			URL url = (URL) req.getBody();
-//			Invoker invoke = new URLInvoker(url);
+		Message res = (Message) msg;
+		if (res.getHeader() != null && res.getHeader().getType() == MessageType.GATTY_RESP.value()) {
+			Object ret = res.getBody();
+			logger.info(ret.toString());
+			ctx.close();
 		} else {
 			ctx.fireChannelRead(msg);
 		}
