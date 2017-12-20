@@ -1,5 +1,6 @@
 package protocol;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -26,13 +27,15 @@ public class URLInvoker implements Invoker {
 		
 		try {
 			int index = 0;
-			Class invokeClass = Class.forName(className);
-			Class[] paramsArray = new Class[params.size()];
+			Class invokeClass = Class.forName("service." + className);
+			Class[] paramsType = new Class[params.size()];
+			Object[] paramsObject = new Object[params.size()];
 			for (Entry<String, Object> entry : params.entrySet()) {
-				paramsArray[index++] = entry.getClass();
+				paramsType[index] = entry.getValue().getClass();
+				paramsObject[index++] = entry.getValue().toString();
 			}
-			Method method = invokeClass.getDeclaredMethod(methodName, paramsArray);
-			return method.invoke(methodName, paramsArray);
+			Method method = invokeClass.getDeclaredMethod(methodName, paramsType);
+			return method.invoke(invokeClass.newInstance(), paramsObject);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,8 +48,12 @@ public class URLInvoker implements Invoker {
 		} catch (IllegalAccessException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
 		}
 		
 		return null;
 	}
+
+
 }

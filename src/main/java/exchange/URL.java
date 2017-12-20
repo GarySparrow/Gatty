@@ -10,8 +10,8 @@ public class URL {
     private String host = "";
     private int port = 0;
     private String path = "";
-    private String className;
-    private String methodName;
+    private String className = "";
+    private String methodName = "";
     private Map<String, Object> attachment = null;
     
     public URL() {
@@ -61,12 +61,18 @@ public class URL {
 		this.attachment = attachment;
 	}
 	public String getClassName() {
+    	if (!path.equals("") && className.equals("")) {
+    		className = path.substring(0, path.indexOf(":"));
+		}
 		return className;
 	}
 	public void setClassName(String className) {
 		this.className = className;
 	}
 	public String getMethodName() {
+		if (!path.equals("") && methodName.equals("")) {
+			methodName = path.substring(path.indexOf(":") + 1, path.length());
+		}
 		return methodName;
 	}
 	public void setMethodName(String methodName) {

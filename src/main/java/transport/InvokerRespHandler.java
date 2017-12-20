@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
-public class GattyRespHandler extends ChannelInboundHandlerAdapter{
+public class InvokerRespHandler extends ChannelInboundHandlerAdapter{
 
 	private ExecutorService tp = Executors.newFixedThreadPool(8);
 	private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
@@ -21,14 +21,19 @@ public class GattyRespHandler extends ChannelInboundHandlerAdapter{
 		// TODO Auto-generated method stub
 		super.channelRead(ctx, msg);
 		Message req = (Message) msg;
-		if (req.getHeader() != null && req.getHeader().getType() == MessageType.GATTY_REQ.value()) {
-			Header header = req.getHeader();
-			String urlStr = (String) req.getBody();
-			URL url = URL.translate(urlStr);
-			Object ret = new Invocation(new URLInvoker(url)).process(ctx);
-			// handle the return
-			ctx.writeAndFlush(buildGattyResponse(ret));
-			ctx.close();
+		Header header = req.getHeader();
+		if (header != null) {
+			if (header.getType() == MessageType.INVOKE_REQ.value()) {
+				// handle the return
+				String urlStr = (String) req.getBody();
+				URL url = URL.translate(urlStr);
+				Object ret = new Invocation(new URLInvoker(url)).process(ctx);
+				logger.info("send invoke response: " + ret);
+				ctx.writeAndFlush(buildInvokeResponse(ret));
+				ctx.close();
+			} else {
+				ctx.fireChannelRead(msg);
+			}
 		} else {
 			ctx.fireChannelRead(msg);
 		}
@@ -41,10 +46,10 @@ public class GattyRespHandler extends ChannelInboundHandlerAdapter{
 		super.exceptionCaught(ctx, cause);
 	}
 	
-	private Message buildGattyResponse(Object ret) {
+	private Message buildInvokeResponse(Object ret) {
 		Message req = new Request();
 		Header header = new Header();
-		header.setType(MessageType.GATTY_REQ.value());
+		header.setType(MessageType.INVOKE_REQ.value());
 		req.setHeader(header);
 		req.setBody(ret);
 		return req;

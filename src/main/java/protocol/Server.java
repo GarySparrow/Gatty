@@ -38,10 +38,10 @@ public class Server {
 //						ch.pipeline().addLast(new GattyMessageEncoder());
 						ch.pipeline().addLast("MessageDecoder", new GattyDecoder(1024 * 1024, 4, 4, -8, 0));
 						ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
-						ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(10));
-//						ch.pipeline().addLast("GattyHandler", new GattyRespHandler());
-						ch.pipeline().addLast("loginAuthHandler", new LoginAuthRespHandler());
-						ch.pipeline().addLast("heartBeatHandler", new HeartBeatRespHandler());
+						ch.pipeline().addLast("ReadTimeoutHandler", new ReadTimeoutHandler(10));
+						ch.pipeline().addLast("LoginAuthHandler", new LoginAuthRespHandler());
+						ch.pipeline().addLast("HeartBeatHandler", new HeartBeatRespHandler());
+						ch.pipeline().addLast("InvokerHandler", new InvokerRespHandler());
 					}
 				});
 			ChannelFuture future = b.bind(GattyConstant.REMOTEIP, GattyConstant.PORT).sync();
@@ -55,9 +55,5 @@ public class Server {
 			bossGroup.shutdownGracefully();
 			workerGroup.shutdownGracefully();
 		}
-	}
-	
-	public static void main(String[] args) throws Exception {
-		new Server().bind();
 	}
 }

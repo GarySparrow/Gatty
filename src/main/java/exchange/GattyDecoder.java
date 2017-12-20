@@ -88,7 +88,6 @@ public class GattyDecoder extends LengthFieldBasedFrameDecoder {
                 key = new String(keyArray, "UTF-8");
                 attachment.put(key, marshallingDecoder.decode(ctx,buf));
             }
-
             header.setAttachment(attachment);
         }
 

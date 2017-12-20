@@ -5,8 +5,8 @@ public enum MessageType {
 	LOGIN_RESP((byte)2),
 	HEARTBEAT_REQ((byte)3),
 	HEARTBEAT_RESP((byte)4),
-	GATTY_REQ((byte) 5),
-	GATTY_RESP((byte) 6);
+	INVOKE_REQ((byte) 5),
+	INVOKE_RESP((byte) 6);
 	
 	private byte v;
 	

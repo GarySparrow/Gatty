@@ -46,7 +46,7 @@ public class GattyEncoder extends MessageToMessageEncoder<Message> {
         Object value = null;
 
         if (header.getAttachment() != null) {
-            buf.writeByte(header.getAttachment().size());
+            buf.writeInt(header.getAttachment().size());
             for (Map.Entry<String, Object> param : header.getAttachment().entrySet()) {
                 key = param.getKey();
                 keyArray = key.getBytes("UTF-8");

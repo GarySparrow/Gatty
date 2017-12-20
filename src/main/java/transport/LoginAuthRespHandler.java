@@ -7,6 +7,7 @@ import exchange.Request;
 import exchange.Header;
 
 import java.net.InetSocketAddress;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
@@ -92,7 +93,10 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
     private Message buildResponse(byte result) {
         Message message = new Response();
         Header header = new Header();
+        Map<String, Object> attachment = new HashMap<>();
+//        attachment.put("keep-alive", true);
         header.setType(MessageType.LOGIN_RESP.value());
+        header.setAttachment(attachment);
         message.setHeader(header);
         message.setBody(result);
         return message;

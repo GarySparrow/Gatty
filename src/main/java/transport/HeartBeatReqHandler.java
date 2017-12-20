@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -19,15 +21,25 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		// TODO Auto-generated method stub
-
 		Message message = (Message) msg;
-		if (message.getHeader() != null && message.getHeader().getType() == MessageType.LOGIN_RESP.value()) {
-			heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatReqHandler.HeartBeatTask(ctx), 0, 1000, TimeUnit.MILLISECONDS);
-		} else if (message.getHeader() != null && message.getHeader().getType() == MessageType.HEARTBEAT_RESP.value()) {
-			logger.info("Client receive server heart beat message : ---> " + message);
+		Header header = message.getHeader();
+		if (header != null) {
+			if (header.getType() == MessageType.LOGIN_RESP.value()) {
+				if (checkInHeader(header, "keep-alive")) {
+					heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatReqHandler.HeartBeatTask(ctx), 0, 1000, TimeUnit.MILLISECONDS);
+				} else {
+					ctx.fireChannelRead(msg);
+				}
+			} else if (header.getType() == MessageType.HEARTBEAT_RESP.value()) {
+				logger.info("Client receive server heart beat message : ---> " + message);
+			} else {
+				ctx.fireChannelRead(msg);
+			}
 		} else {
-			ctx.fireChannelRead(message);
+			ctx.fireChannelRead(msg);
 		}
+
+
 	}
 	
 //	@Override
@@ -76,5 +88,15 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 			heartBeat = null;
 		}
 		ctx.fireExceptionCaught(cause);
+	}
+
+	private boolean checkInHeader(Header header, String checked) {
+		Map<String, Object> attachment = header.getAttachment();
+		if (attachment != null) {
+			if (attachment.containsKey(checked) && attachment.get(checked).equals(true)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

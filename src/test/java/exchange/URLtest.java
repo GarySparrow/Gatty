@@ -3,6 +3,7 @@ package exchange;
 import common.GattyConstant;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -32,5 +33,11 @@ public class URLtest {
         String str = "DEFAULT://" + GattyConstant.REMOTEIP + ":" + GattyConstant.PORT
                 + "/HelloWorld:sayHello?name=Gatty";
         System.out.println(URL.translate(str).toString());
+    }
+
+    @Test
+    public void tempTest() {
+        File file = new File("src/main/java");
+        System.out.println();
     }
 }

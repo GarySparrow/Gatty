@@ -32,5 +32,7 @@ dependencies {
     
     compile group: 'org.jboss.marshalling', name: 'jboss-marshalling-serial', version: '2.0.2.Final'
 
-	compile group: 'com.alibaba', name: 'dubbo', version: '2.5.7';
+	compile group: 'com.alibaba', name: 'dubbo', version: '2.5.7'
+
+    compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
 }

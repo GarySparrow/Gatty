@@ -5,15 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f7d96fc-1186-4265-b15d-cbbd16633b91" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/exchange/URLtest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/transport/InvokerReqHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/protocol/ClientTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/protocol/ServerTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/transport/GattyMessageDecoder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/transport/GattyMessageEncoder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/transport/GattyReqHandler.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/gatty_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/gatty_main.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/gatty_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/gatty_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/exchange/Encoder.java" afterPath="$PROJECT_DIR$/src/main/java/exchange/Encoder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/common/MessageType.java" afterPath="$PROJECT_DIR$/src/main/java/common/MessageType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/exchange/GattyDecoder.java" afterPath="$PROJECT_DIR$/src/main/java/exchange/GattyDecoder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/exchange/GattyEncoder.java" afterPath="$PROJECT_DIR$/src/main/java/exchange/GattyEncoder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/exchange/URL.java" afterPath="$PROJECT_DIR$/src/main/java/exchange/URL.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/protocol/Invocation.java" afterPath="$PROJECT_DIR$/src/main/java/protocol/Invocation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/transport/GattyReqHandler.java" afterPath="$PROJECT_DIR$/src/main/java/transport/GattyReqHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/transport/GattyRespHandler.java" afterPath="$PROJECT_DIR$/src/main/java/transport/GattyRespHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/protocol/Client.java" afterPath="$PROJECT_DIR$/src/main/java/protocol/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/protocol/Server.java" afterPath="$PROJECT_DIR$/src/main/java/protocol/Server.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/protocol/URLInvoker.java" afterPath="$PROJECT_DIR$/src/main/java/protocol/URLInvoker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java" afterPath="$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/transport/LoginAuthRespHandler.java" afterPath="$PROJECT_DIR$/src/main/java/transport/LoginAuthRespHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/exchange/URLtest.java" afterPath="$PROJECT_DIR$/src/test/java/exchange/URLtest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/transport/GattyRespHandler.java" afterPath="$PROJECT_DIR$/src/main/java/transport/InvokerRespHandler.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -33,61 +45,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GattyEncoder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/exchange/GattyEncoder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/protocol/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-145">
-              <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+            <state relative-caret-position="351">
+              <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="48" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GattyDecoder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/exchange/GattyDecoder.java">
+      <file leaf-file-name="InvokerRespHandler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/transport/InvokerRespHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="98" column="9" lean-forward="false" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
+            <state relative-caret-position="406">
+              <caret line="30" column="60" lean-forward="true" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GattyRespHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/transport/GattyRespHandler.java">
+      <file leaf-file-name="HeartBeatReqHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GattyReqHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/transport/GattyReqHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="URLtest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/exchange/URLtest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+            <state relative-caret-position="319">
+              <caret line="32" column="21" lean-forward="false" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,41 +77,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InvokerReqHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/transport/InvokerReqHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="35" column="43" lean-forward="true" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/protocol/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+            <state relative-caret-position="774">
+              <caret line="67" column="32" lean-forward="false" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InvokeFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/protocol/InvokeFilter.java">
+      <file leaf-file-name="LoginAuthReqHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/transport/LoginAuthReqHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+            <state relative-caret-position="29">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Invocation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/protocol/Invocation.java">
+      <file leaf-file-name="HeartBeatRespHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/transport/HeartBeatRespHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+            <state relative-caret-position="186">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Encoder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Encoder.java">
+      <file leaf-file-name="LoginAuthRespHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/transport/LoginAuthRespHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="220">
+              <caret line="95" column="49" lean-forward="false" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -344,8 +336,8 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4535448239960" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="3947716836" />
+        <entry key="$PROJECT_DIR$" value="4536617684282" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="3859803743" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -452,11 +444,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/GattyMessageDecoder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/MarshallingDecoder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LoginAuthReqHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LoginAuthRespHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/connection/GattyMessageDecoder.java" />
         <option value="$PROJECT_DIR$/src/main/java/others/GattyServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/connection/LoginAuthRespHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/others/GattyClient.java" />
@@ -466,7 +453,6 @@
         <option value="$PROJECT_DIR$/src/main/java/common/test.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/URL.java" />
         <option value="$PROJECT_DIR$/src/main/java/common/URL.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/transport/URL.java" />
         <option value="$PROJECT_DIR$/src/main/java/exchange/Decoder.java" />
         <option value="$PROJECT_DIR$/src/main/java/exchange/GattyMessage.java" />
@@ -476,33 +462,39 @@
         <option value="$PROJECT_DIR$/src/main/java/transport/GattyServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/registry/Registry.java" />
         <option value="$PROJECT_DIR$/src/main/java/exchange/Header.java" />
-        <option value="$PROJECT_DIR$/src/main/java/transport/GattyMessageEncoder.java" />
         <option value="$PROJECT_DIR$/src/main/java/transport/GattyMessageDecoder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/transport/LoginAuthReqHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/transport/LoginAuthRespHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/protocol/Server.java" />
-        <option value="$PROJECT_DIR$/src/main/java/protocol/Client.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/Interceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/Filter.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/InvokeFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/Exporter.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/Invoker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/protocol/URLInvoker.java" />
         <option value="$PROJECT_DIR$/src/main/java/transport/HeartBeatRespHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/helloWorld.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/helloWorldService.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/HelloWorldService.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/HelloWorld.java" />
         <option value="$PROJECT_DIR$/src/main/java/exchange/Encoder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/exchange/GattyDecoder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/exchange/GattyEncoder.java" />
         <option value="$PROJECT_DIR$/src/test/java/exchange/URL.java" />
-        <option value="$PROJECT_DIR$/src/main/java/exchange/URL.java" />
-        <option value="$PROJECT_DIR$/src/test/java/exchange/URLtest.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/Invocation.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/common/MessageType.java" />
         <option value="$PROJECT_DIR$/src/main/java/transport/GattyRespHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/transport/GattyReqHandler.java" />
+        <option value="$PROJECT_DIR$/src/test/java/protocol/ServerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/protocol/ClientTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/protocol/Server.java" />
+        <option value="$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/protocol/Client.java" />
+        <option value="$PROJECT_DIR$/src/main/java/exchange/GattyDecoder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/exchange/GattyEncoder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/exchange/URL.java" />
+        <option value="$PROJECT_DIR$/src/main/java/transport/InvokerReqHandler.java" />
+        <option value="$PROJECT_DIR$/src/test/java/exchange/URLtest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/protocol/URLInvoker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/transport/LoginAuthRespHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/transport/InvokerRespHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/transport/GattyMessageEncoder.java" />
       </list>
     </option>
   </component>
@@ -512,10 +504,14 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="128" />
-    <option name="width" value="1806" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -534,16 +530,6 @@
     <panes>
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gatty" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="gatty" />
@@ -570,6 +556,32 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
               <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gatty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gatty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protocol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -800,9 +812,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -825,80 +837,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.URLtest.translate2URL">
-    <configuration default="false" name="GattyServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="others.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="others.GattyServer" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="gatty_main" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ClientTest">
+    <configuration default="false" name="ClientTest.connect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="protocol.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="protocol.Server" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="gatty_main" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="protocol.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="protocol.Client" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="gatty_main" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="URLtest.translate2Str" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="exchange.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="gatty_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="exchange" />
-      <option name="MAIN_CLASS_NAME" value="exchange.URLtest" />
-      <option name="METHOD_NAME" value="translate2Str" />
+      <option name="PACKAGE_NAME" value="protocol" />
+      <option name="MAIN_CLASS_NAME" value="protocol.ClientTest" />
+      <option name="METHOD_NAME" value="connect" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -912,7 +864,85 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="URLtest.translate2URL" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="ServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="protocol.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="gatty_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="protocol" />
+      <option name="MAIN_CLASS_NAME" value="protocol.ServerTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ServerTest.bind" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="protocol.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="gatty_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="protocol" />
+      <option name="MAIN_CLASS_NAME" value="protocol.ServerTest" />
+      <option name="METHOD_NAME" value="bind" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ClientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="protocol.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="gatty_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="protocol" />
+      <option name="MAIN_CLASS_NAME" value="protocol.ClientTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="URLtest.tempTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="exchange.*" />
@@ -924,7 +954,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="exchange" />
       <option name="MAIN_CLASS_NAME" value="exchange.URLtest" />
-      <option name="METHOD_NAME" value="translate2URL" />
+      <option name="METHOD_NAME" value="tempTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1326,19 +1356,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.GattyServer" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Server" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Client" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.URLtest.translate2Str" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.URLtest.translate2URL" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.ClientTest.connect" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ServerTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ServerTest.bind" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ClientTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.URLtest.tempTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.URLtest.translate2URL" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.URLtest.translate2Str" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Client" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Server" />
-        <item index="4" class="java.lang.String" itemvalue="Application.GattyServer" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ClientTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ServerTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.URLtest.tempTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ClientTest.connect" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ServerTest.bind" />
       </list>
     </recent_temporary>
   </component>
@@ -1358,32 +1388,45 @@
       <workItem from="1511701288234" duration="66727000" />
       <workItem from="1512975970433" duration="37359000" />
       <workItem from="1513227423627" duration="4772000" />
-      <workItem from="1513432103884" duration="85023000" />
+      <workItem from="1513432103884" duration="85129000" />
+      <workItem from="1513733768571" duration="46302000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="URLtest_translate2Str - 2017.12.19 at 20h 28m 52s.xml">
-      <configuration name="URLtest.translate2Str" configurationId="JUnit" />
+    <history-entry file="ClientTest - 2017.12.20 at 22h 19m 30s.xml">
+      <configuration name="ClientTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="URLtest_translate2URL - 2017.12.19 at 20h 29m 41s.xml">
-      <configuration name="URLtest.translate2URL" configurationId="JUnit" />
+    <history-entry file="ClientTest - 2017.12.20 at 22h 29m 19s.xml">
+      <configuration name="ClientTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="URLtest_translate2URL - 2017.12.19 at 20h 37m 46s.xml">
-      <configuration name="URLtest.translate2URL" configurationId="JUnit" />
+    <history-entry file="ClientTest - 2017.12.20 at 22h 29m 51s.xml">
+      <configuration name="ClientTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="URLtest_translate2URL - 2017.12.19 at 20h 43m 13s.xml">
-      <configuration name="URLtest.translate2URL" configurationId="JUnit" />
+    <history-entry file="ClientTest - 2017.12.20 at 22h 30m 31s.xml">
+      <configuration name="ClientTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="URLtest_translate2URL - 2017.12.19 at 20h 47m 54s.xml">
-      <configuration name="URLtest.translate2URL" configurationId="JUnit" />
+    <history-entry file="ClientTest - 2017.12.20 at 22h 31m 11s.xml">
+      <configuration name="ClientTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="URLtest_translate2URL - 2017.12.19 at 20h 48m 08s.xml">
-      <configuration name="URLtest.translate2URL" configurationId="JUnit" />
+    <history-entry file="ClientTest - 2017.12.20 at 22h 31m 33s.xml">
+      <configuration name="ClientTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClientTest - 2017.12.20 at 22h 33m 16s.xml">
+      <configuration name="ClientTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClientTest - 2017.12.20 at 22h 36m 15s.xml">
+      <configuration name="ClientTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClientTest - 2017.12.20 at 22h 59m 31s.xml">
+      <configuration name="ClientTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ServerTest - 2017.12.20 at 22h 18m 53s.xml">
+      <configuration name="ServerTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198761000" />
+    <option name="totallyTimeSpent" value="245169000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1395,13 +1438,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="128" y="0" width="1806" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35268345" sideWeight="0.2949599" order="7" side_tool="true" content_ui="tabs" x="268" y="369" width="1651" height="309" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1409,17 +1451,18 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3844469" sideWeight="0.49788007" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45783132" sideWeight="0.49788007" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858709" sideWeight="0.49391857" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858709" sideWeight="0.49391857" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3493976" sideWeight="0.7050401" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22852233" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49788007" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3581599" sideWeight="0.7050401" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2153518" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.49788007" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1428,7 +1471,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1496,30 +1538,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java</url>
-          <line>24</line>
-          <properties />
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java</url>
-          <line>28</line>
-          <properties />
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/exchange/GattyEncoder.java</url>
-          <line>48</line>
-          <properties />
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java</url>
-          <line>58</line>
+          <line>70</line>
           <properties />
           <option name="timeStamp" value="76" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="77" />
+      <option name="time" value="102" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1533,114 +1563,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/handler/codec/LengthFieldBasedFrameDecoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="183" column="55" lean-forward="true" selection-start-line="183" selection-start-column="55" selection-end-line="183" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/handler/codec/ByteToMessageDecoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="76" column="66" lean-forward="false" selection-start-line="76" selection-start-column="66" selection-end-line="76" selection-end-column="66" />
-          <folding>
-            <element signature="e#4430#4431#0" expanded="true" />
-            <element signature="e#4845#6058#0" expanded="true" />
-            <element signature="e#6057#6058#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/handler/codec/marshalling/MarshallingEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/util/ReferenceCountUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="85" column="26" lean-forward="false" selection-start-line="85" selection-start-column="26" selection-end-line="85" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/serialize/MarshallingCodeCFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="13" column="43" lean-forward="false" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/registry/Registry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/ChannelInboundHandlerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="68" column="69" lean-forward="true" selection-start-line="68" selection-start-column="69" selection-end-line="68" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/DefaultChannelPipeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="911" column="0" lean-forward="false" selection-start-line="911" selection-start-column="0" selection-end-line="911" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/nio/AbstractNioChannel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="346" column="0" lean-forward="false" selection-start-line="346" selection-start-column="0" selection-end-line="346" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/transport/GattyMessageDecoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="58" column="32" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/handler/timeout/IdleStateHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="303" column="0" lean-forward="false" selection-start-line="303" selection-start-column="0" selection-end-line="303" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/AbstractChannelHandlerContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="830" column="0" lean-forward="false" selection-start-line="830" selection-start-column="0" selection-end-line="830" selection-end-column="0" />
-          <folding>
-            <element signature="e#26565#26566#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1656,7 +1582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1676,144 +1601,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/nio/NioEventLoop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="462" column="0" lean-forward="false" selection-start-line="462" selection-start-column="0" selection-end-line="462" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/transport/LoginAuthRespHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/ExportFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/Exporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/transport/HeartBeatRespHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="28" column="46" lean-forward="true" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/serialize/GattyMarshallingEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/HelloWorldService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="e#171#172#0" expanded="true" />
-            <element signature="e#209#210#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="55" column="23" lean-forward="true" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/ExportFilter.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/Exporter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Request.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Header.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Decoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="9" column="74" lean-forward="false" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/MessageType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/transport/GattyMessageEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="65" column="25" lean-forward="true" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/HelloWorld.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/transport/LoginAuthReqHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1821,68 +1614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/URLInvoker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/URL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1239">
-          <caret line="94" column="46" lean-forward="true" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#457#458#0" expanded="true" />
-            <element signature="e#479#480#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#554#555#0" expanded="true" />
-            <element signature="e#585#586#0" expanded="true" />
-            <element signature="e#607#608#0" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#682#683#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#735#736#0" expanded="true" />
-            <element signature="e#779#780#0" expanded="true" />
-            <element signature="e#810#811#0" expanded="true" />
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#855#856#0" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#914#915#0" expanded="true" />
-            <element signature="e#938#939#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#989#990#0" expanded="true" />
-            <element signature="e#1012#1013#0" expanded="true" />
-            <element signature="e#1039#1040#0" expanded="true" />
-            <element signature="e#1057#1058#0" expanded="true" />
-            <element signature="e#1093#1094#0" expanded="true" />
-            <element signature="e#1116#1117#0" expanded="true" />
-            <element signature="e#1162#1163#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1247#1248#0" expanded="true" />
-            <element signature="e#1282#1283#0" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
-            <element signature="e#1337#1338#0" expanded="true" />
-            <element signature="e#1383#1384#0" expanded="true" />
-            <element signature="e#1416#1417#0" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
-            <element signature="e#1473#1474#0" expanded="true" />
-            <element signature="e#1521#1522#0" expanded="true" />
-            <element signature="e#1556#1557#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/serialize/GattyMarshallingDecoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="22" column="47" lean-forward="false" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -1895,10 +1626,204 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Encoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="34" column="53" lean-forward="false" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/protocol/Protocol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/handler/timeout/IdleStateHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="285" column="0" lean-forward="false" selection-start-line="285" selection-start-column="0" selection-end-line="285" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/handler/codec/ByteToMessageDecoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="284" column="0" lean-forward="false" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/AbstractChannelHandlerContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="347" column="0" lean-forward="false" selection-start-line="347" selection-start-column="0" selection-end-line="347" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/DefaultChannelPipeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="935" column="0" lean-forward="false" selection-start-line="935" selection-start-column="0" selection-end-line="935" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/nio/AbstractNioByteChannel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/nio/NioEventLoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="464" column="17" lean-forward="true" selection-start-line="464" selection-start-column="17" selection-end-line="464" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/ChannelHandlerContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="180" column="19" lean-forward="false" selection-start-line="180" selection-start-column="19" selection-end-line="180" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.17.Final/a331849cc36a7d8448eda14a79bdd0631404d180/netty-all-4.1.17.Final-sources.jar!/io/netty/channel/ChannelInboundInvoker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Decoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="9" column="74" lean-forward="false" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/serialize/GattyMarshallingDecoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="22" column="47" lean-forward="false" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/serialize/GattyMarshallingEncoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="20" column="4" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/exchange/URLtest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="38" column="28" lean-forward="true" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/common/MessageType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/URL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-278">
+          <caret line="73" column="22" lean-forward="false" selection-start-line="73" selection-start-column="22" selection-end-line="73" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/Invocation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/GattyEncoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/GattyDecoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Header.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="13" column="43" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/protocol/ServerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/protocol/ClientTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="35" column="64" lean-forward="true" selection-start-line="35" selection-start-column="64" selection-end-line="35" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/InvokeFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -1911,84 +1836,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/exchange/URLtest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/InvokeFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/GattyEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/transport/GattyRespHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/Invocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/transport/GattyReqHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Encoder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/URLInvoker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/GattyDecoder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/HelloWorld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="98" column="9" lean-forward="false" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
+        <state relative-caret-position="145">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/HelloWorldService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/serialize/MarshallingCodeCFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="13" column="43" lean-forward="false" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exchange/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/protocol/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-145">
-          <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+        <state relative-caret-position="351">
+          <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="48" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/protocol/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+        <state relative-caret-position="774">
+          <caret line="67" column="32" lean-forward="false" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/transport/InvokerRespHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="30" column="60" lean-forward="true" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/transport/LoginAuthReqHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/transport/LoginAuthRespHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="95" column="49" lean-forward="false" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/transport/InvokerReqHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="35" column="43" lean-forward="true" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/transport/HeartBeatRespHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/transport/HeartBeatReqHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="32" column="21" lean-forward="false" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/transport/GattyMessageDecoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/transport/GattyMessageEncoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
           <folding />
         </state>
       </provider>
