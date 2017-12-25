@@ -32,45 +32,43 @@ public class Client {
 	private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     EventLoopGroup group = new NioEventLoopGroup();
     
-    public void connect(String host, int port) throws Exception{
-    	try {
-			Bootstrap b = new Bootstrap();
-			b.group(group).channel(NioSocketChannel.class)
-				.option(ChannelOption.TCP_NODELAY, true)
-				.handler(new ChannelInitializer<SocketChannel>() {
-					@Override
-					protected void initChannel(SocketChannel ch) throws Exception {
-						// TODO Auto-generated method stub
-						ch.pipeline().addLast("MessageDecoder", new GattyDecoder(1024 * 1024, 4, 4, -8, 0));
-						ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
-						ch.pipeline().addLast("ReadTimeoutHandler", new ReadTimeoutHandler(10));
-						ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
-						ch.pipeline().addLast("HeartBeatHandler", new HeartBeatReqHandler());
-						ch.pipeline().addLast("InvokerHandler", new InvokerReqHandler());
-					}
-				});
-			future = b.connect(new InetSocketAddress(host, port),
-					new InetSocketAddress(GattyConstant.LOCALIP, GattyConstant.LOCAL_PORT)).sync();
-			future.channel().closeFuture().sync();
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
-			executor.execute( () -> {
-				try {
-					TimeUnit.SECONDS.sleep(5);
-					try {
-						connect(GattyConstant.REMOTEIP, GattyConstant.PORT);
-					} catch (Exception e) {
-						// TODO: handle exception
-						e.printStackTrace();
-					}
-				} catch (Exception e) {
-					// TODO: handle exception
-					e.printStackTrace();
+    public Bootstrap connect() throws Exception{
+//    	try {
+		Bootstrap b = new Bootstrap();
+		b.group(group).channel(NioSocketChannel.class)
+			.option(ChannelOption.TCP_NODELAY, true)
+			.handler(new ChannelInitializer<SocketChannel>() {
+				@Override
+				protected void initChannel(SocketChannel ch) throws Exception {
+					// TODO Auto-generated method stub
+					ch.pipeline().addLast("MessageDecoder", new GattyDecoder(1024 * 1024, 4, 4, -8, 0));
+					ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
+					ch.pipeline().addLast("ReadTimeoutHandler", new ReadTimeoutHandler(10));
+					ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
+					ch.pipeline().addLast("HeartBeatHandler", new HeartBeatReqHandler());
+					ch.pipeline().addLast("InvokerHandler", new InvokerReqHandler());
 				}
 			});
-		}
+		return b;
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//		} finally {
+//			executor.execute( () -> {
+//				try {
+//					TimeUnit.SECONDS.sleep(5);
+//					try {
+//						connect(GattyConstant.REMOTEIP, GattyConstant.PORT);
+//					} catch (Exception e) {
+//						// TODO: handle exception
+//						e.printStackTrace();
+//					}
+//				} catch (Exception e) {
+//					// TODO: handle exception
+//					e.printStackTrace();
+//				}
+//			});
+//		}
     }
 
 }

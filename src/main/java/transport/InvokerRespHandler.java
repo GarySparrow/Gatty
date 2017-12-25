@@ -30,10 +30,8 @@ public class InvokerRespHandler extends ChannelInboundHandlerAdapter{
 				Object ret = new Invocation(new URLInvoker(url)).process(ctx);
 				logger.info("send invoke response: " + ret);
 				ctx.writeAndFlush(buildInvokeResponse(ret));
-				ctx.close();
-			} else {
-				ctx.fireChannelRead(msg);
 			}
+			ctx.fireChannelRead(msg);
 		} else {
 			ctx.fireChannelRead(msg);
 		}
@@ -49,7 +47,7 @@ public class InvokerRespHandler extends ChannelInboundHandlerAdapter{
 	private Message buildInvokeResponse(Object ret) {
 		Message req = new Request();
 		Header header = new Header();
-		header.setType(MessageType.INVOKE_REQ.value());
+		header.setType(MessageType.INVOKE_RESP.value());
 		req.setHeader(header);
 		req.setBody(ret);
 		return req;

@@ -21,7 +21,7 @@ public class Server {
 	private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
 
 
-	public void bind() throws Exception {
+	public ChannelFuture bind() throws Exception {
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 		try {			
@@ -48,6 +48,7 @@ public class Server {
 			logger.info("Gatty server start successfully : " + (GattyConstant.REMOTEIP + " : "
 					+ GattyConstant.PORT));
 			future.channel().closeFuture().sync();
+			return future;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -55,5 +56,6 @@ public class Server {
 			bossGroup.shutdownGracefully();
 			workerGroup.shutdownGracefully();
 		}
+		return null;
 	}
 }

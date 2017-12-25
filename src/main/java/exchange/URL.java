@@ -9,15 +9,29 @@ public class URL {
     private String password = "";
     private String host = "";
     private int port = 0;
-    private String path = "";
     private String className = "";
     private String methodName = "";
     private Map<String, Object> attachment = null;
     
-    public URL() {
-    	
+    public URL(String protocol, String host, int port, String className, String methodName) {
+		this(protocol, host, port, className, methodName, null);
     }
-    
+
+	public URL(String protocol, String host, int port, String className, String methodName, Map<String, Object> attachment) {
+		this(protocol, "", "", host, port, className, methodName, attachment);
+	}
+
+	public URL(String protocol, String username, String password, String host, int port, String className, String methodName, Map<String, Object> attachment) {
+		this.protocol = protocol;
+		this.username = username;
+		this.password = password;
+		this.host = host;
+		this.port = port;
+		this.className = className;
+		this.methodName = methodName;
+		this.attachment = attachment;
+	}
+
 	public String getProtocol() {
 		return protocol;
 	}
@@ -48,12 +62,6 @@ public class URL {
 	public void setPort(int port) {
 		this.port = port;
 	}
-	public String getPath() {
-		return path;
-	}
-	public void setPath(String path) {
-		this.path = path;
-	}
 	public Map<String, Object> getAttachment() {
 		return attachment;
 	}
@@ -61,18 +69,12 @@ public class URL {
 		this.attachment = attachment;
 	}
 	public String getClassName() {
-    	if (!path.equals("") && className.equals("")) {
-    		className = path.substring(0, path.indexOf(":"));
-		}
 		return className;
 	}
 	public void setClassName(String className) {
 		this.className = className;
 	}
 	public String getMethodName() {
-		if (!path.equals("") && methodName.equals("")) {
-			methodName = path.substring(path.indexOf(":") + 1, path.length());
-		}
 		return methodName;
 	}
 	public void setMethodName(String methodName) {
@@ -80,42 +82,62 @@ public class URL {
 	}
 
 	//protocol://username:password@host:port/path
-	public static URL translate(String url) {
-		URL res = new URL();
+	public static URL translate(String url) throws URLTranslateException{
+		URL res = new URL("", "", 0, "", "");
 		int start = 0, last = url.indexOf(":");
+		if (last == -1) {
+			throw new URLTranslateException();
+		}
 		String protocol = url.substring(0, last);
 		start = last + 1;
 		String username = "";
 		String password = "";
 		if (url.contains("@")) {
 			last = url.indexOf(":", start);
+			if (last == -1) {
+				throw new URLTranslateException();
+			}
 			username = url.substring(start, last);
 			start = last + 1;
 			last = url.indexOf("@");
+			if (last == -1) {
+				throw new URLTranslateException();
+			}
 			password = url.substring(start, last);
 			start = last + 1;
 		}
 		String host = "";
 		String port = "";
 		last = url.indexOf(":", start);
+		if (last == -1) {
+			throw new URLTranslateException();
+		}
 		host = url.substring(start + 2, last);
 		start = last + 1;
 		last = url.indexOf("/", start);
+		if (last == -1) {
+			throw new URLTranslateException();
+		}
 		port = url.substring(start, last);
-		String path = "";
+		String className = "";
+		String methodName = "";
+		start = last + 1;
+		last = url.indexOf(":", start);
+		if (last == -1) {
+			throw new URLTranslateException();
+		}
+		className = url.substring(start, last);
 		start = last + 1;
 		last = url.indexOf("?", start);
-		if (last == -1) {
-			last = url.length();
-		}
-		path = url.substring(start, last);
-
+		methodName = url.substring(start, last);
 
 		res.setProtocol(protocol);
 		res.setHost(host);
 		res.setUsername(username);
 		res.setPassword(password);
-		res.setPath(path);
+		res.setClassName(className);
+		res.setMethodName(methodName);
+		res.setPassword(password);
 		res.setPort(Integer.valueOf(port));
 
 		if (url.length() != last) {
@@ -125,6 +147,9 @@ public class URL {
 				String key;
 				String value;
 				last = url.indexOf("=", start);
+				if (last == -1) {
+					throw new URLTranslateException();
+				}
 				key = url.substring(start, last);
 				start = last + 1;
 				last = url.indexOf("&", start);
@@ -137,12 +162,20 @@ public class URL {
 			}
 			res.setAttachment(map);
 		}
-
 		return res;
 	}
 
 	//protocol://username:password@class/method
-	public static String translate (URL url) {
+	public static String translate (URL url) throws URLTranslateException{
+    	if ("".equals(url.getHost()) || url.getHost() == null) {
+    		throw new URLTranslateException("no host assigned");
+		}
+		if ("".equals(url.getClassName()) || url.getClassName() == null) {
+    		throw new URLTranslateException("no class name assigned");
+		}
+		if ("".equals(url.getMethodName()) || url.getMethodName() == null) {
+			throw new URLTranslateException("no method name assigned");
+		}
 		StringBuilder sb = new StringBuilder();
 		sb.append(url.getProtocol());
 		sb.append("://");
@@ -156,7 +189,9 @@ public class URL {
 		sb.append(":");
 		sb.append(url.getPort());
 		sb.append("/");
-		sb.append(url.getPath());
+		sb.append(url.getClassName());
+		sb.append(":");
+		sb.append(url.getMethodName());
 		Map<String, Object> map = url.getAttachment();
 		boolean first = true;
 		for (Map.Entry<String, Object> entry : map.entrySet()) {
@@ -181,7 +216,8 @@ public class URL {
 				"Password: " + password + "\n" +
 				"Host: " + host + "\n" +
 				"Port: " + port + "\n" +
-				"Path: " + path + "\n");
+				"ClassName: " + className + "\n" +
+				"MethodName: " + methodName + "\n");
 		for (Map.Entry<String, Object> entry : attachment.entrySet()) {
 			sb.append(entry.getKey() + " = " + entry.getValue() + "\n");
 		}

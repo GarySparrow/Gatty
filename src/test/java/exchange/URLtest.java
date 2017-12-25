@@ -16,23 +16,27 @@ public class URLtest {
     @Test
     public void translate2Str() {
         Scanner scan = new Scanner(System.in);
-        URL url = new URL();
-        url.setHost(GattyConstant.REMOTEIP);
-        url.setPort(GattyConstant.PORT);
-        url.setProtocol("DEFAULT");
         Map<String, Object> map = new HashMap<>();
         map.put("name", "Gatty");
-        url.setAttachment(map);
-        url.setPath("HelloWorld:sayHello");
-        System.out.println(URL.translate(url));
+        URL url = new URL("DEFAULT", GattyConstant.REMOTEIP, GattyConstant.PORT,
+                "HelloWorldService", "sayHello", map);
+        try {
+            System.out.println(URL.translate(url));
+        } catch (URLTranslateException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void translate2URL() {
         Scanner scan = new Scanner(System.in);
         String str = "DEFAULT://" + GattyConstant.REMOTEIP + ":" + GattyConstant.PORT
-                + "/HelloWorld:sayHello?name=Gatty";
-        System.out.println(URL.translate(str).toString());
+                + "/HelloWorldService:sayHello?name=Gatty";
+        try {
+            System.out.println(URL.translate(str).toString());
+        } catch (URLTranslateException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

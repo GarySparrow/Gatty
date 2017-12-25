@@ -34,15 +34,9 @@ public class InvokerReqHandler extends ChannelInboundHandlerAdapter {
 		if (header != null) {
 			if (header.getType() == MessageType.INVOKE_RESP.value()) {
 				Object ret = res.getBody();
-				logger.info(ret.toString());
-				ctx.close();
-			} else if (header.getType() == MessageType.LOGIN_RESP.value()) {
-				Message url = buildInvokeRequest("DEFAULT://127.0.0.1:9090/HelloWorldService:sayHello?name=Gatty");
-				ctx.writeAndFlush(url);
-				logger.info("send invoker:" + url.toString());
-			} else {
-				ctx.fireChannelRead(msg);
+				logger.info("receive return message: " + ret.toString());
 			}
+			ctx.fireChannelRead(msg);
 		} else {
 			ctx.fireChannelRead(msg);
 		}
@@ -64,17 +58,5 @@ public class InvokerReqHandler extends ChannelInboundHandlerAdapter {
 			}
 		}
 		return false;
-	}
-
-	private Message buildInvokeRequest(String url) {
-		Message message = new Request();
-		Header header = new Header();
-		Map<String, Object> attachment = new HashMap<>();
-		attachment.put("invoker", true);
-		header.setAttachment(attachment);
-		header.setType(MessageType.INVOKE_REQ.value());
-		message.setHeader(header);
-		message.setBody(url);
-		return message;
 	}
 }

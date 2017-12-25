@@ -24,12 +24,8 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 		Message message = (Message) msg;
 		Header header = message.getHeader();
 		if (header != null) {
-			if (header.getType() == MessageType.LOGIN_RESP.value()) {
-				if (checkInHeader(header, "keep-alive")) {
-					heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatReqHandler.HeartBeatTask(ctx), 0, 1000, TimeUnit.MILLISECONDS);
-				} else {
-					ctx.fireChannelRead(msg);
-				}
+			if (checkInHeader(header, "keep-alive")) {
+				heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatReqHandler.HeartBeatTask(ctx), 0, 1000, TimeUnit.MILLISECONDS);
 			} else if (header.getType() == MessageType.HEARTBEAT_RESP.value()) {
 				logger.info("Client receive server heart beat message : ---> " + message);
 			} else {
