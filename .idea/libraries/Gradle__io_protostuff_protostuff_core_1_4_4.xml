@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.protostuff:protostuff-core:1.4.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.protostuff/protostuff-core/1.4.4/7b13d0710cb01d3fae5d35ce4809065aa39da141/protostuff-core-1.4.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.protostuff/protostuff-core/1.4.4/eb8bd55373e88bd447990cf5ae28686b25878c29/protostuff-core-1.4.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

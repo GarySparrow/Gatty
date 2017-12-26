@@ -24,9 +24,10 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 		Message message = (Message) msg;
 		Header header = message.getHeader();
 		if (header != null) {
-			if (checkInHeader(header, "keep-alive")) {
+			if (checkInHeader(header, "keep-alived")) {
 				heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatReqHandler.HeartBeatTask(ctx), 0, 1000, TimeUnit.MILLISECONDS);
-			} else if (header.getType() == MessageType.HEARTBEAT_RESP.value()) {
+			}
+			if (header.getType() == MessageType.HEARTBEAT_RESP.value()) {
 				logger.info("Client receive server heart beat message : ---> " + message);
 			} else {
 				ctx.fireChannelRead(msg);
@@ -50,7 +51,7 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 //			ctx.fireChannelRead(message);
 //		}
 //	}
-	
+
 	private class HeartBeatTask implements Runnable {
 		private final ChannelHandlerContext ctx;
 		private Logger logger = Logger.getLogger(this.getClass().getSimpleName());
@@ -58,7 +59,7 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 		public HeartBeatTask(final ChannelHandlerContext ctx) {
 			this.ctx = ctx;
 		}
-		
+
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
@@ -66,7 +67,7 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter{
 			logger.info("Client send heart beat message to server : ---> " + heartBeat);
 			ctx.writeAndFlush(heartBeat);
 		}
-		
+
 		private Message buildHeartBeatReq() {
 			Message message = new Request();
 			Header header = new Header();

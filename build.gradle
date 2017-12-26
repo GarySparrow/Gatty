@@ -35,4 +35,10 @@ dependencies {
 	compile group: 'com.alibaba', name: 'dubbo', version: '2.5.7'
 
     compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+
+    compile group : 'io.protostuff', name: 'protostuff-core', version: '1.4.4'
+
+    compile group : 'io.protostuff', name: 'protostuff-runtime', version: '1.4.4'
+
+    compile group : 'io.protostuff', name: 'protostuff-api', version: '1.4.4'
 }

@@ -19,7 +19,7 @@ public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter{
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		// TODO Auto-generated method stub
 		Message message = (Message) msg;
-		
+
 		if (message.getHeader() != null && message.getHeader().getType() == MessageType.HEARTBEAT_REQ.value()) {
 			logger.info("Receive transport heart beat : ---> " + message);
 			Message heartBeat = buildHeartBeatResp();

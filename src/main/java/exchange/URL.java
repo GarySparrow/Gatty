@@ -1,9 +1,13 @@
 package exchange;
 
+import serialize.ProtoSutffUtil;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class URL {
+
+	private static String charset = "UTF-8";
     private String protocol = "";
     private String username = "";
     private String password = "";
@@ -92,14 +96,14 @@ public class URL {
 		start = last + 1;
 		String username = "";
 		String password = "";
-		if (url.contains("@")) {
+		if (url.substring(start, url.indexOf("/")).contains("@")) {
 			last = url.indexOf(":", start);
 			if (last == -1) {
 				throw new URLTranslateException();
 			}
 			username = url.substring(start, last);
 			start = last + 1;
-			last = url.indexOf("@");
+			last = url.indexOf("@", start);
 			if (last == -1) {
 				throw new URLTranslateException();
 			}
@@ -203,7 +207,8 @@ public class URL {
 			} else {
 				sb.append("&");
 			}
-			sb.append(key + "=" + value.toString());
+
+			sb.append(key + "=" + value);
 		}
 		return sb.toString();
 	}

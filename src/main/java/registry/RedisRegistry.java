@@ -63,7 +63,7 @@ public class RedisRegistry {
             }
         } catch (URLTranslateException e) {
             e.printStackTrace();
-        }
+}
     }
 
     private static void request(Request req) {

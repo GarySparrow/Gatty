@@ -45,7 +45,7 @@ public class Client {
 					ch.pipeline().addLast("MessageEncoder", new GattyEncoder());
 					ch.pipeline().addLast("ReadTimeoutHandler", new ReadTimeoutHandler(10));
 					ch.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
-					ch.pipeline().addLast("HeartBeatHandler", new HeartBeatReqHandler());
+					ch.pipeline().addLast("HeartBeatHandler", new HeartBeatRespHandler());
 					ch.pipeline().addLast("InvokerHandler", new InvokerReqHandler());
 				}
 			});
