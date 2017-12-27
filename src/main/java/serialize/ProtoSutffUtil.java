@@ -26,7 +26,6 @@ public class ProtoSutffUtil {
     }
 
     public static <T> byte[] serializer(T obj) {
-        @SuppressWarnings("unchecked")
         Class<T> clazz = (Class<T>) obj.getClass();
         LinkedBuffer buffer = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);
         try {

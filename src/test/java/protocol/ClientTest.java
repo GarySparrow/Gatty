@@ -38,7 +38,7 @@ public class ClientTest {
     private Request buildInvokeRequest(URL url) {
         Request request = new Request();
         Map<String, Object> attachment = new HashMap<>();
-        attachment.put("keep-alived", true);
+//        attachment.put("keep-alived", true);
         Header header = new Header();
         header.setAttachment(attachment);
         header.setType(MessageType.INVOKE_REQ.value());

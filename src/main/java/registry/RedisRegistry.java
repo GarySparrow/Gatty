@@ -16,9 +16,7 @@ import transport.InvokerReqHandler;
 import transport.LoginAuthReqHandler;
 
 import java.net.InetSocketAddress;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -33,6 +31,7 @@ public class RedisRegistry {
     private static Logger logger = Logger.getLogger("RedisRegistry");
     private static final String urls = "urls";
     private static Queue<Request> reqs = new ConcurrentLinkedDeque<>();
+    private static Queue<Object> rets = new ConcurrentLinkedDeque<>();
     private static ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 
     static {
@@ -91,6 +90,22 @@ public class RedisRegistry {
     public static Request pop() {
         if (!reqs.isEmpty()) {
             return reqs.poll();
+        }
+        return null;
+    }
+
+    public static Set<String> all() {
+        Jedis jedis = RedisPool.getJedis();
+        return jedis.smembers(urls);
+    }
+
+    public static void pushRet(Object obj) {
+        rets.add(obj);
+    }
+
+    public static Object popRet() {
+        if (!rets.isEmpty()) {
+            return rets.poll();
         }
         return null;
     }

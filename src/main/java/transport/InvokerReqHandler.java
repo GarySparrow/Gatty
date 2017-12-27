@@ -12,6 +12,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import protocol.InvokeFilter;
 import protocol.Invoker;
 import protocol.URLInvoker;
+import registry.RedisRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +35,7 @@ public class InvokerReqHandler extends ChannelInboundHandlerAdapter {
 		if (header != null) {
 			if (header.getType() == MessageType.INVOKE_RESP.value()) {
 				Object ret = res.getBody();
+				RedisRegistry.pushRet(ret);
 				logger.info("receive return message: " + ret.toString());
 			}
 			ctx.fireChannelRead(msg);
